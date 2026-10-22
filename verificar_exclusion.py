@@ -95,11 +95,15 @@ def revisar_git() -> list[str]:
         return []
     try:
         salida = subprocess.run(
-            ["git", "-C", str(RAIZ), "log", "--all", "-p", "--pretty=format:"],
+            ["git", "-C", str(RAIZ), "log", "--all", "-p", "--pretty=format:",
+             "--", ".", ":!.gitignore", ":!verificar_exclusion.py"],
             capture_output=True, text=True, errors="ignore", timeout=120,
         ).stdout.lower()
     except (OSError, subprocess.SubprocessError):
         return []
+    # Las mismas excepciones del escaneo de texto aplican al historial.
+    for exc in EXCEPCIONES:
+        salida = salida.replace(exc, "")
     fallos = []
     for patron in PROHIBIDOS:
         if re.search(patron, salida):
