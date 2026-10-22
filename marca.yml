@@ -1,0 +1,21 @@
+sitio:
+  nombre: "Cadenza Inc."
+  lema: "The things as they are"
+  descripcion: "Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador."
+  correo: "alcivarlopezernesto@gmail.com"
+  dominio: "cadenzainc.com"
+  anio: 2026
+
+navegacion:
+  - titulo: "Obra"
+    url: "/obra.html"
+  - titulo: "Pedagogía"
+    url: "/pedagogia.html"
+  - titulo: "Investigación"
+    url: "/investigacion.html"
+  - titulo: "Estudio"
+    url: "/estudio.html"
+  - titulo: "Sobre"
+    url: "/sobre.html"
+  - titulo: "Contacto"
+    url: "/contacto.html"

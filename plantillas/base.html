@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$titulo</title>
+<meta name="description" content="$descripcion">
+<meta property="og:title" content="$titulo">
+<meta property="og:description" content="$descripcion">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/estatico/img/logo.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<link rel="stylesheet" href="/estatico/css/estilo.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cadenza Inc.",
+  "slogan": "The things as they are",
+  "url": "https://cadenzainc.com",
+  "logo": "https://cadenzainc.com/estatico/img/logo.jpg",
+  "email": "alcivarlopezernesto@gmail.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Ernesto Alcívar López",
+    "jobTitle": "Compositor, arreglista y docente"
+  },
+  "address": {"@type": "PostalAddress", "addressLocality": "Quito", "addressCountry": "EC"}
+}
+</script>
+</head>
+<body class="$clase">
+<a class="salto" href="#contenido">Ir al contenido</a>
+
+<header class="cabecera">
+  <a class="marca" href="/">
+    <img src="/estatico/img/logo.jpg" alt="Cadenza Inc." width="56" height="56">
+    <span class="marca-texto">
+      <strong>Cadenza Inc.</strong>
+      <em>$lema</em>
+    </span>
+  </a>
+  <nav class="navegacion" id="nav">
+      $nav
+  </nav>
+</header>
+
+<main id="contenido">
+$cuerpo
+</main>
+
+<footer class="pie">
+  <div class="pie-linea"></div>
+  <p><strong>Cadenza Inc.</strong> · $lema</p>
+  <p>Quito, Ecuador · <a href="mailto:$correo">$correo</a></p>
+  <p class="pie-fino">© $anio Cadenza Inc. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

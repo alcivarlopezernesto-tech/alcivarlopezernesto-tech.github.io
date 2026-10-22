@@ -1,0 +1,21 @@
+# Lo que nunca entra a este repositorio
+trading/
+scalping/
+finanzas/
+contabilidad/
+philosophy/
+filosofia/
+cadenza_trading/
+cadenza_philosophy/
+cadenza_finanzas/
+cadenza_scalping/
+*.csv
+*.zip
+*.ogg
+
+# Sistema
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.venv/

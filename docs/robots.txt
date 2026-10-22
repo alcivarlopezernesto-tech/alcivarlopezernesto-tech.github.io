@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cadenzainc.com/sitemap.xml
