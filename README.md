@@ -2,8 +2,10 @@
 
 Sitio estático de la marca **Cadenza Inc.** Composición, arreglo, pedagogía musical e investigación aplicada. Autor: Ernesto Alcívar López.
 
-- Dominio: `cadenzainc.com`
+- Dominio: `cadenzainc.com` (pendiente de registrar; mientras tanto el sitio vive en GitHub Pages)
 - Publicación: GitHub Pages, rama `main`, carpeta `/docs`
+- Dirección actual: https://alcivarlopezernesto-tech.github.io/
+- Repositorio: https://github.com/alcivarlopezernesto-tech/alcivarlopezernesto-tech.github.io
 - Generador: `build.py` (Python + markdown + PyYAML)
 
 ## Construir
@@ -32,6 +34,16 @@ git push
 ```
 
 GitHub Pages sirve `docs/` tal cual, sin compilar: el sitio no depende de Jekyll.
+
+## Dominio propio (cuando se registre)
+
+1. Registrar `cadenzainc.com`.
+2. En el panel DNS del registrador: registros `A` del dominio raíz a
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`;
+   y un `CNAME` de `www` a `alcivarlopezernesto-tech.github.io`.
+3. Poner `dominio: "cadenzainc.com"` en `marca.yml` (hoy está vacío a propósito).
+4. `python3 build.py` y `git push`: eso genera `docs/CNAME` y GitHub Pages
+   toma el dominio y el certificado.
 
 ## Estructura
 
