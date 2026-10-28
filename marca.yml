@@ -4,7 +4,7 @@ sitio:
   descripcion: "Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador."
   descripcion_en: "Cadenza Inc. — composition, arranging, music pedagogy and applied research. Ernesto Alcívar López, Quito, Ecuador."
   correo: "alcivarlopezernesto@gmail.com"
-  dominio: "cadenzainc.com"
+  dominio: ""   # cadenzainc.com — ponerlo aquí cuando el dominio esté registrado y apuntando a GitHub Pages
   anio: 2026
 
 navegacion:

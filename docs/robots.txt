@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://cadenzainc.com/sitemap.xml
+Sitemap: https://alcivarlopezernesto-tech.github.io/sitemap.xml

@@ -35,6 +35,14 @@ NAV = MARCA["navegacion"]
 SITIO = MARCA["sitio"]
 UI = MARCA["interfaz"]
 
+# Dominio propio del sitio. Mientras no esté registrado o no apunte a GitHub
+# Pages, se deja vacío y el sitio se publica en la dirección de GitHub Pages;
+# el archivo CNAME solo se genera cuando hay dominio, y el sitemap apunta
+# siempre a la dirección donde el sitio responde de verdad.
+DIRECCION_PAGES = "alcivarlopezernesto-tech.github.io"
+DOMINIO = str(SITIO.get("dominio") or "").strip()
+DOMINIO_URL = DOMINIO or DIRECCION_PAGES
+
 MD = markdown.Markdown(extensions=["extra", "tables", "attr_list", "md_in_html"])
 
 SEPARADOR_EN = "<!--:en-->"
@@ -450,9 +458,10 @@ def construir() -> None:
 
     # Archivos de publicación
     (SALIDA / ".nojekyll").write_text("", encoding="utf-8")
-    (SALIDA / "CNAME").write_text(SITIO["dominio"] + "\n", encoding="utf-8")
+    if DOMINIO:
+        (SALIDA / "CNAME").write_text(DOMINIO + "\n", encoding="utf-8")
     (SALIDA / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: https://{SITIO['dominio']}/sitemap.xml\n", encoding="utf-8")
+        f"User-agent: *\nAllow: /\nSitemap: https://{DOMINIO_URL}/sitemap.xml\n", encoding="utf-8")
     (SALIDA / "sitemap.xml").write_text(sitemap(), encoding="utf-8")
 
     print(f"Sitio generado en {SALIDA}")
@@ -467,7 +476,7 @@ def sitemap() -> str:
         if rel == "404.html":
             continue
         loc = "/" if rel == "index.html" else f"/{rel}"
-        urls.append(f"<url><loc>https://{SITIO['dominio']}{loc}</loc></url>")
+        urls.append(f"<url><loc>https://{DOMINIO_URL}{loc}</loc></url>")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "\n".join(urls) + "\n</urlset>\n")
