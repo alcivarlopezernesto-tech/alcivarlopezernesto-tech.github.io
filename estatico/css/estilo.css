@@ -225,6 +225,21 @@ h3{font-size:1.18rem;margin:0 0 .5rem}
 html[data-idioma="es"] [data-lang="en"],
 html[data-idioma="en"] [data-lang="es"]{display:none!important}
 
+/* ---------- descargas ---------- */
+.descargas{margin-top:3.236rem;padding-top:1.618rem;border-top:1px solid var(--linea)}
+.descargas h2{font-family:var(--sans);font-size:.76rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro);margin:0 0 .45rem}
+.desc-nota{font-size:.84rem;color:var(--tenue);margin:0 0 1.1rem;max-width:62ch;line-height:1.5}
+.descargas table{width:100%;max-width:54rem;border-collapse:collapse;margin:0 0 2.618rem}
+.descargas th{font-family:var(--sans);font-size:.66rem;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--tenue);text-align:left;padding:.45rem 0;
+  border-bottom:1px solid var(--linea);white-space:nowrap}
+.descargas td{font-size:.9rem;line-height:1.45;padding:.6rem 0;border-bottom:1px solid var(--linea);vertical-align:baseline}
+.descargas td a{color:var(--blanco);text-decoration:none;border-bottom:1px solid transparent}
+.descargas td a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+.descargas td a::after{content:"\00a0\2193";color:var(--oro);opacity:.65;font-size:.92em}
+.desc-num{text-align:right;white-space:nowrap;color:var(--tenue);font-variant-numeric:tabular-nums;width:5.5rem}
+
 /* ---------- prosa ---------- */
 .prosa p{margin:0 0 1.2rem}
 .prosa ul,.prosa ol{padding-left:1.2rem;margin:0 0 1.4rem}
@@ -258,6 +273,8 @@ html[data-idioma="en"] [data-lang="es"]{display:none!important}
   .datos{grid-template-columns:1fr;gap:.2rem}
   .datos dd{margin-bottom:.9rem}
   .rejilla{grid-template-columns:1fr}
+  .descargas td,.descargas th{font-size:.82rem}
+  .desc-num{width:3.6rem}
   .portada h1{font-size:1.5rem;letter-spacing:.045em;max-width:none}
   .oficio{grid-template-columns:1fr;gap:.35rem 0;padding:1.1rem 0}
   .portada h1{letter-spacing:.05em}
@@ -266,6 +283,7 @@ html[data-idioma="en"] [data-lang="es"]{display:none!important}
   *{transition:none!important;scroll-behavior:auto!important}
 }
 @media print{
+  .descargas td a::after{content:""}
   .cabecera,.pie,.saltar{display:none}
   body{background:#fff;color:#000}
   a{color:#000}

@@ -249,9 +249,63 @@ def bloque_datos(ficha: dict) -> str:
     return f'<dl class="datos">{"".join(datos)}</dl>'
 
 
+def bloque_descargas(ficha: dict) -> str:
+    """Tabla de documentos descargables declarada en el front matter:
+
+    descargas:
+      - grupo: "Planificación|Planning"
+        nota: "Versión del autor|Author's version"
+        filas:
+          - ["Título|Title", "archivo.pdf", 5]
+    """
+    grupos = ficha.get("descargas") or []
+    if not grupos:
+        return ""
+    salida = []
+    for g in grupos:
+        titulo_es, titulo_en = partir_etiqueta(g.get("grupo", ""))
+        filas = []
+        for fila in g.get("filas", []) or []:
+            if len(fila) < 2:
+                continue
+            tit_es, tit_en = partir_etiqueta(fila[0])
+            archivo = str(fila[1])
+            paginas = str(fila[2]) if len(fila) > 2 else ""
+            ruta = ESTATICO / "pdf" / archivo
+            if not ruta.exists():
+                raise RuntimeError("falta el PDF declarado en descargas: " + str(ruta))
+            peso = f"{ruta.stat().st_size / 1024:.0f} KB"
+            filas.append(
+                f'<tr><td class="desc-titulo">'
+                f'<a href="/estatico/pdf/{html.escape(archivo)}" download>{bi(tit_es, tit_en)}</a>'
+                f'</td><td class="desc-num">{html.escape(paginas)}</td>'
+                f'<td class="desc-num">{peso}</td></tr>'
+            )
+        if not filas:
+            continue
+        nota = ""
+        if g.get("nota"):
+            n_es, n_en = partir_etiqueta(g["nota"])
+            nota = f'<p class="desc-nota">{bi(n_es, n_en)}</p>'
+        salida.append(
+            f'<section class="descargas">\n'
+            f'  <h2>{bi(titulo_es, titulo_en)}</h2>\n'
+            f'  {nota}\n'
+            f'  <table>\n'
+            f'    <thead><tr><th>{bi("Documento", "Document")}</th>'
+            f'<th class="desc-num">{bi("Páginas", "Pages")}</th>'
+            f'<th class="desc-num">{bi("Peso", "Size")}</th></tr></thead>\n'
+            f'    <tbody>{"".join(filas)}</tbody>\n'
+            f'  </table>\n'
+            f'</section>'
+        )
+    return "\n".join(salida)
+
+
 def ficha_html(ficha: dict, seccion: str) -> str:
     seccion_es, seccion_en = SECCIONES.get(seccion, (seccion.capitalize(), seccion.capitalize()))
     galeria = bloque_galeria(ficha)
+    descargas = bloque_descargas(ficha)
     clase_ficha = ' class="ficha ficha-ancha"' if galeria else ' class="ficha"'
     cuerpo = md(ficha["_cuerpo"])
     cuerpo_en = md(ficha["_cuerpo_en"]) if ficha.get("_cuerpo_en") else cuerpo
@@ -270,6 +324,7 @@ def ficha_html(ficha: dict, seccion: str) -> str:
   <div class="prosa" data-lang="en">
     {cuerpo_en}
   </div>
+  {descargas}
 </article>"""
 
 
