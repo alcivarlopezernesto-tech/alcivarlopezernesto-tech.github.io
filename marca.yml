@@ -2,20 +2,36 @@ sitio:
   nombre: "Cadenza Inc."
   lema: "The things as they are"
   descripcion: "Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador."
+  descripcion_en: "Cadenza Inc. — composition, arranging, music pedagogy and applied research. Ernesto Alcívar López, Quito, Ecuador."
   correo: "alcivarlopezernesto@gmail.com"
   dominio: "cadenzainc.com"
   anio: 2026
 
 navegacion:
   - titulo: "Obra"
+    titulo_en: "Work"
     url: "/obra.html"
   - titulo: "Pedagogía"
+    titulo_en: "Teaching"
     url: "/pedagogia.html"
   - titulo: "Investigación"
+    titulo_en: "Research"
     url: "/investigacion.html"
   - titulo: "Estudio"
+    titulo_en: "Studio"
     url: "/estudio.html"
   - titulo: "Sobre"
+    titulo_en: "About"
     url: "/sobre.html"
   - titulo: "Contacto"
+    titulo_en: "Contact"
     url: "/contacto.html"
+
+interfaz:
+  idioma_etiqueta: "Idioma / Language"
+  salto: ["Ir al contenido", "Skip to content"]
+  derechos: ["Todos los derechos reservados.", "All rights reserved."]
+  obra_reciente: ["Obra reciente", "Recent work"]
+  no_encontrado: ["No encontrado", "Not found"]
+  no_encontrado_texto: ["Esta página no existe o cambió de lugar.", "This page does not exist or has moved."]
+  volver_inicio: ["Volver al inicio", "Back to the home page"]

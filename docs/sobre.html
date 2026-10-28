@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sobre — Cadenza Inc.</title>
-<meta name="description" content="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos.">
-<meta property="og:title" content="Sobre — Cadenza Inc.">
-<meta property="og:description" content="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos.">
+<title data-es="Sobre — Cadenza Inc." data-en="About — Cadenza Inc.">Sobre — Cadenza Inc.</title>
+<meta name="description" content="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos." data-es="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos." data-en="Ernesto Alcívar López — composer, arranger and guitar teacher. Career, training and distinctions.">
+<meta property="og:title" content="Sobre — Cadenza Inc." data-es="Sobre — Cadenza Inc." data-en="About — Cadenza Inc.">
+<meta property="og:description" content="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos." data-es="Ernesto Alcívar López — compositor, arreglista y docente de guitarra. Trayectoria, formación y reconocimientos." data-en="Ernesto Alcívar López — composer, arranger and guitar teacher. Career, training and distinctions.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,21 +80,26 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html" class="activo">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html" class="activo"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
-<section class="cabecera-seccion"><h1>Sobre</h1></section><div class="prosa"><p>Músico profesional, compositor, arreglista y docente de guitarra. Nacido en Quito en 1981. Docente del Conservatorio Nacional de Música desde el 26 de octubre de 2014, donde enseña guitarra, armonía, creación y arreglos.</p>
-<p>Su trabajo combina tres oficios que rara vez se ejercen juntos: la escritura musical para formaciones reales, la enseñanza de la escritura a otros y la reconstrucción digital de partituras del patrimonio ecuatoriano.</p>
+<section class="cabecera-seccion"><h1><span data-lang="es">Sobre</span><span data-lang="en">About</span></h1></section><div class="prosa" data-lang="es"><p>Músico profesional, compositor, arreglista y docente de guitarra. Nacido en Quito en 1981. Docente del Conservatorio Nacional de Música desde el 26 de octubre de 2014, donde enseña guitarra, armonía, creación y arreglos.</p>
+<p>Su trabajo combina oficios que rara vez se ejercen juntos: la escritura musical para formaciones reales, la enseñanza de la escritura a otros, la dirección de sus propios arreglos en registros en vivo y el trabajo técnico sobre partituras del patrimonio ecuatoriano.</p>
 <h2>Formación</h2>
 <ul>
-<li><strong>Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial</strong> — Instituto Superior Tecnológico Universitario Rumiñahui. Trabajo de titulación en curso (2026) sobre generación asistida de contrapunto barroco mediante LSTM, dirigido por el Ing. Juan Carlos Minango Negrete.</li>
+<li><strong>Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial</strong> — Instituto Superior Tecnológico Universitario Rumiñahui. Programa concluido en 2026 con promedio 9,32/10; defensa de titulación el 28 de octubre de 2026, sobre generación asistida de contrapunto barroco mediante LSTM, dirigido por el Ing. Juan Carlos Minango Negrete.</li>
 <li><strong>Tecnólogo Superior Universitario en Docencia e Innovación Educativa</strong> — Instituto Tecnológico Universitario Rumiñahui, 2025.</li>
 <li><strong>Título de Compositor</strong> — Conservatorio Superior Nacional de Música, 2018.</li>
 <li><strong>Bachiller Técnico Musical, especialidad guitarra</strong> — Conservatorio Nacional de Música, 2009. Calificación 18/20.</li>
@@ -78,14 +121,40 @@
 </ul>
 <h2>Herramientas</h2>
 <p>LilyPond y Sibelius para escritura musical; SuperCollider para síntesis y programación orientada a objetos; Python para análisis de datos y modelos de aprendizaje automático; LaTeX para documentación técnica y pedagógica.</p>
-<p><a href="/estatico/pdf/cv_ernesto_alcivar.pdf">Descargar el currículum completo en PDF</a></p></div>
+<p><a href="/estatico/pdf/cv_ernesto_alcivar.pdf">Descargar el currículum completo en PDF</a></p></div><div class="prosa" data-lang="en"><p>Professional musician, composer, arranger and guitar teacher. Born in Quito in 1981. Teacher at the Conservatorio Nacional de Música since 26 October 2014, where he teaches guitar, harmony, composition and arranging.</p>
+<p>His work brings together trades that are rarely practised together: writing music for real ensembles, teaching others to write, conducting his own arrangements in live recordings, and technical work on scores from Ecuador's musical heritage.</p>
+<h2>Training</h2>
+<ul>
+<li><strong>Master's in Digital Tools for Data Analysis and Artificial Intelligence</strong> — Instituto Superior Tecnológico Universitario Rumiñahui. Programme completed in 2026 with a grade average of 9.32/10; viva on 28 October 2026, on computer-assisted generation of Baroque counterpoint with LSTM networks, supervised by Ing. Juan Carlos Minango Negrete.</li>
+<li><strong>Higher Technology degree in Teaching and Educational Innovation</strong> — Instituto Tecnológico Universitario Rumiñahui, 2025.</li>
+<li><strong>Degree in Composition</strong> — Conservatorio Superior Nacional de Música, 2018.</li>
+<li><strong>Technical secondary diploma in Music, guitar specialisation</strong> — Conservatorio Nacional de Música, 2009. Grade 18/20.</li>
+</ul>
+<h2>Career</h2>
+<ul>
+<li>Guitar and theory teacher at the Conservatorio Nacional de Música since 2014. Recognised for ten years of service in June 2024.</li>
+<li>Arrangement for female choir performed at the Festival de Villancicos organised by Juan Eljuri, which took first place (CNM certificate, April 2026).</li>
+<li>Digital transcription of scores for the Orquesta Sinfónica Nacional del Ecuador in 2013: <em>Misa Popular Ecuatoriana</em> by Claudio Aizaga, <em>Symphony No. 6</em> by Luis Humberto Salgado and <em>Suite Andina</em> by Carlos Bonilla Chávez.</li>
+<li>Composer of the anthems of the Gonzalo Pizarro canton (Lumbaqui) and of the El Reventador parish, both from 2010.</li>
+<li>Guitar teacher in the municipal programme Quito Cultura Viva, 2014.</li>
+</ul>
+<h2>Distinctions</h2>
+<ul>
+<li>Recognition from the National Assembly of Ecuador for his teaching work and for preserving the country's musical heritage, January 2025.</li>
+<li>Recognition from the Ministry of Culture and Heritage for his contribution to Ecuador's children's and youth symphonic-choral ensembles, May 2016.</li>
+<li>Board member of the Casa de la Cultura Ecuatoriana, Sucumbíos branch, 2010.</li>
+<li>Recognition at the VI National Gathering "La Guitarra es...", Casa de la Cultura Ecuatoriana, Chimborazo branch, 2003.</li>
+</ul>
+<h2>Tools</h2>
+<p>LilyPond and Sibelius for music notation; SuperCollider for synthesis and object-oriented programming; Python for data analysis and machine-learning models; LaTeX for technical and teaching documentation.</p>
+<p><a href="/estatico/pdf/cv_ernesto_alcivar.pdf">Download the full CV in PDF</a></p></div>
 </main>
 
 <footer class="pie">
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

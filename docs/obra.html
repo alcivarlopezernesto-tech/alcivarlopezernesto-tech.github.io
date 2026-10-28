@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Obra — Cadenza Inc.</title>
-<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
-<meta property="og:title" content="Obra — Cadenza Inc.">
-<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
+<title data-es="Obra — Cadenza Inc." data-en="Work — Cadenza Inc.">Obra — Cadenza Inc.</title>
+<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
+<meta property="og:title" content="Obra — Cadenza Inc." data-es="Obra — Cadenza Inc." data-en="Work — Cadenza Inc.">
+<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,70 +80,80 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html" class="activo">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <section class="cabecera-seccion">
-  <h1>Obra</h1>
-  <p class="entrada"><p>Obra compuesta, arreglada o reconstruida para orquesta, coro, ensambles de guitarra e instrumento solista. Cada ficha indica año, formación, duración y el estado del material.</p></p>
+  <h1><span data-lang="es">Obra</span><span data-lang="en">Work</span></h1>
+  <div data-lang="es"><p>Obra compuesta, arreglada o reconstruida para orquesta, coro, ensambles de guitarra e instrumento solista. Cada ficha indica año, formación, duración y el estado del material.</p></div><div data-lang="en"><p>Music composed, arranged or reconstructed for orchestra, choir, guitar ensembles and solo instrument. Each entry gives the year, instrumentation, duration and the state of the material.</p></div>
 </section>
 <section class="rejilla">
 <a class="tarjeta" href="/obra/himno-el-reventador.html">
-  <span class="tarjeta-meta">Himno oficial · 2010</span>
-  <h3>Himno a la Parroquia El Reventador</h3>
-  <p>Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Himno oficial · 2010</span><span data-lang="en">Official anthem · 2010</span></span>
+  <h3><span data-lang="es">Himno a la Parroquia El Reventador</span><span data-lang="en">Anthem to the Parish of El Reventador</span></h3>
+  <p><span data-lang="es">Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</span><span data-lang="en">Parish anthem composed in 2010, certified by the Parish GAD in 2014.</span></p>
 </a>
 <a class="tarjeta" href="/obra/himno-gonzalo-pizarro.html">
-  <span class="tarjeta-meta">Himno oficial · 2010</span>
-  <h3>Himno al Cantón Gonzalo Pizarro</h3>
-  <p>Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</p>
+  <span class="tarjeta-meta"><span data-lang="es">Himno oficial · 2010</span><span data-lang="en">Official anthem · 2010</span></span>
+  <h3><span data-lang="es">Himno al Cantón Gonzalo Pizarro</span><span data-lang="en">Anthem to the Canton of Gonzalo Pizarro</span></h3>
+  <p><span data-lang="es">Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</span><span data-lang="en">Winning entry in the public competition held by the Municipal GAD of Lumbaqui (2010).</span></p>
 </a>
 <a class="tarjeta" href="/obra/misa-popular-ecuatoriana.html">
-  <span class="tarjeta-meta">Levantamiento digital · 2013</span>
-  <h3>Misa Popular Ecuatoriana — levantamiento digital</h3>
-  <p>Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Levantamiento digital · 2013</span><span data-lang="en">Digital transcription · 2013</span></span>
+  <h3><span data-lang="es">Misa Popular Ecuatoriana — levantamiento digital</span><span data-lang="en">Misa Popular Ecuatoriana — digital transcription</span></h3>
+  <p><span data-lang="es">Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</span><span data-lang="en">Five movements for mixed choir and orchestra, by Claudio Aizaga, digitally reconstructed for the OSNE.</span></p>
 </a>
 <a class="tarjeta" href="/obra/sinfonia-6-salgado.html">
-  <span class="tarjeta-meta">Levantamiento digital · 2013</span>
-  <h3>Sinfonía No. 6 — levantamiento digital</h3>
-  <p>Cuatro movimientos para orquesta de cuerdas y timbal, de Luis Humberto Salgado, digitalizados para la OSNE.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Levantamiento digital · 2013</span><span data-lang="en">Digital transcription · 2013</span></span>
+  <h3><span data-lang="es">Sinfonía No. 6 — levantamiento digital</span><span data-lang="en">Symphony No. 6 — digital transcription</span></h3>
+  <p><span data-lang="es">Cuatro movimientos para orquesta de cuerdas y timbal, de Luis Humberto Salgado, digitalizados para la OSNE.</span><span data-lang="en">Four movements for string orchestra and timpani, by Luis Humberto Salgado, digitised for the OSNE.</span></p>
 </a>
 <a class="tarjeta" href="/obra/suite-andina-bonilla.html">
-  <span class="tarjeta-meta">Levantamiento digital · 2013</span>
-  <h3>Suite Andina — levantamiento digital</h3>
-  <p>Tres movimientos para orquesta, de Carlos Bonilla Chávez, reconstruidos para la OSNE.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Levantamiento digital · 2013</span><span data-lang="en">Digital transcription · 2013</span></span>
+  <h3><span data-lang="es">Suite Andina — levantamiento digital</span><span data-lang="en">Suite Andina — digital transcription</span></h3>
+  <p><span data-lang="es">Tres movimientos para orquesta, de Carlos Bonilla Chávez, reconstruidos para la OSNE.</span><span data-lang="en">Three movements for orchestra, by Carlos Bonilla Chávez, reconstructed for the OSNE.</span></p>
 </a>
 <a class="tarjeta" href="/obra/piezas-progresivas-ensamble-guitarras.html">
-  <span class="tarjeta-meta">Ensamble de guitarras · 2017</span>
-  <h3>Diez piezas progresivas para ensamble de guitarras</h3>
-  <p>Ciclo didáctico de nivel básico medio, hasta cuatro voces, pensado para ensayo completo de una hora.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Ensamble de guitarras · 2017</span><span data-lang="en">Guitar ensemble · 2017</span></span>
+  <h3><span data-lang="es">Diez piezas progresivas para ensamble de guitarras</span><span data-lang="en">Ten progressive pieces for guitar ensemble</span></h3>
+  <p><span data-lang="es">Ciclo didáctico de nivel básico medio, hasta cuatro voces, pensado para ensayo completo de una hora.</span><span data-lang="en">Teaching cycle at lower-intermediate level, up to four voices, designed to fill a full one-hour rehearsal.</span></p>
 </a>
 <a class="tarjeta" href="/obra/nocturnal-iturralde.html">
-  <span class="tarjeta-meta">Levantamiento digital · 2017</span>
-  <h3>Nocturnal — levantamiento digital</h3>
-  <p>Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Levantamiento digital · 2017</span><span data-lang="en">Digital transcription · 2017</span></span>
+  <h3><span data-lang="es">Nocturnal — levantamiento digital</span><span data-lang="en">Nocturnal — digital transcription</span></h3>
+  <p><span data-lang="es">Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.</span><span data-lang="en">Pasillo by Homero Iturralde in Carlos Bonilla Chávez&#x27;s arrangement, reconstructed in digital notation.</span></p>
 </a>
 <a class="tarjeta" href="/obra/suite-costera.html">
-  <span class="tarjeta-meta">Orquesta · 2017</span>
-  <h3>Suite Costera</h3>
-  <p>Obra orquestal en varios movimientos, escrita sobre materiales de la costa ecuatoriana.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Orquesta · 2017</span><span data-lang="en">Orchestra · 2017</span></span>
+  <h3><span data-lang="es">Suite Costera</span><span data-lang="en">Suite Costera</span></h3>
+  <p><span data-lang="es">Obra orquestal en varios movimientos, escrita sobre materiales de la costa ecuatoriana.</span><span data-lang="en">Orchestral work in several movements, written on materials from the Ecuadorian coast.</span></p>
 </a>
 <a class="tarjeta" href="/obra/arreglo-coro-femenino.html">
-  <span class="tarjeta-meta">Arreglo coral · 2026</span>
-  <h3>Arreglo para coro femenino — Festival de Villancicos</h3>
-  <p>Arreglo interpretado en el festival organizado por Juan Eljuri, con primer lugar para el coro.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Arreglo coral · 2026</span><span data-lang="en">Choral arrangement · 2026</span></span>
+  <h3><span data-lang="es">Arreglo para coro femenino — Festival de Villancicos</span><span data-lang="en">Arrangement for female choir — Festival de Villancicos</span></h3>
+  <p><span data-lang="es">Arreglo interpretado en el festival organizado por Juan Eljuri, con primer lugar para el coro.</span><span data-lang="en">Arrangement performed at the festival organised by Juan Eljuri, where the choir took first place.</span></p>
+</a>
+<a class="tarjeta" href="/obra/arreglos.html">
+  <span class="tarjeta-meta"><span data-lang="es">Arreglos · 2026</span><span data-lang="en">Arrangements · 2026</span></span>
+  <h3><span data-lang="es">Arreglos</span><span data-lang="en">Arrangements</span></h3>
+  <p><span data-lang="es">Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música.</span><span data-lang="en">Six arrangements on video: four recordings conducted by the author, from the Museo del Pasillo and the Casa Mejía, and two from the Conservatorio Superior Nacional de Música.</span></p>
 </a>
 <a class="tarjeta" href="/obra/op-intempore.html">
-  <span class="tarjeta-meta">Ciclo · en proceso</span>
-  <h3>Op. Intempore</h3>
-  <p>Ciclo de dieciséis piezas en proceso de escritura y producción, con partitura, audio y registro audiovisual por pieza.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Ciclo · concluido</span><span data-lang="en">Cycle · completed</span></span>
+  <h3><span data-lang="es">Op. Intempore</span><span data-lang="en">Op. Intempore</span></h3>
+  <p><span data-lang="es">Ciclo de dieciséis piezas concluido y publicado. Cada video incluye en su descripción el enlace de descarga libre de la partitura.</span><span data-lang="en">A cycle of sixteen pieces, completed and published. Every video carries the free score download link in its description.</span></p>
 </a>
 </section>
 </main>
@@ -114,7 +162,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

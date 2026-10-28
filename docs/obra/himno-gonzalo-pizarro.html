@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Himno al Cantón Gonzalo Pizarro — Cadenza Inc.</title>
-<meta name="description" content="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).">
-<meta property="og:title" content="Himno al Cantón Gonzalo Pizarro — Cadenza Inc.">
-<meta property="og:description" content="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).">
+<title data-es="Himno al Cantón Gonzalo Pizarro — Cadenza Inc." data-en="Anthem to the Canton of Gonzalo Pizarro — Cadenza Inc.">Himno al Cantón Gonzalo Pizarro — Cadenza Inc.</title>
+<meta name="description" content="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010)." data-es="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010)." data-en="Winning entry in the public competition held by the Municipal GAD of Lumbaqui (2010).">
+<meta property="og:title" content="Himno al Cantón Gonzalo Pizarro — Cadenza Inc." data-es="Himno al Cantón Gonzalo Pizarro — Cadenza Inc." data-en="Anthem to the Canton of Gonzalo Pizarro — Cadenza Inc.">
+<meta property="og:description" content="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010)." data-es="Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010)." data-en="Winning entry in the public competition held by the Municipal GAD of Lumbaqui (2010).">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,27 +80,39 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html" class="activo">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/obra.html">Obra</a> / Himno al Cantón Gonzalo Pizarro</p>
-    <h1>Himno al Cantón Gonzalo Pizarro</h1>
-    <p class="sumilla">Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</p>
+    <p class="migas"><a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a> / <span data-lang="es">Himno al Cantón Gonzalo Pizarro</span><span data-lang="en">Anthem to the Canton of Gonzalo Pizarro</span></p>
+    <h1><span data-lang="es">Himno al Cantón Gonzalo Pizarro</span><span data-lang="en">Anthem to the Canton of Gonzalo Pizarro</span></h1>
+    <p class="sumilla"><span data-lang="es">Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</span><span data-lang="en">Winning entry in the public competition held by the Municipal GAD of Lumbaqui (2010).</span></p>
   </header>
-  <dl class="datos"><dt>Género</dt><dd>Himno oficial</dd><dt>Año</dt><dd>2010</dd><dt>Concurso</dt><dd>GAD Municipal de Gonzalo Pizarro, 21 de febrero – 4 de julio de 2010</dd><dt>Estado</dt><dd>Vigente como himno del cantón</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Género</span><span data-lang="en">Genre</span></dt><dd><span data-lang="es">Himno oficial</span><span data-lang="en">Official anthem</span></dd><dt><span data-lang="es">Año</span><span data-lang="en">Year</span></dt><dd><span data-lang="es">2010</span><span data-lang="en">2010</span></dd><dt><span data-lang="es">Concurso</span><span data-lang="en">Competition</span></dt><dd><span data-lang="es">GAD Municipal de Gonzalo Pizarro, 21 de febrero – 4 de julio de 2010</span><span data-lang="en">GAD Municipal de Gonzalo Pizarro, 21 February – 4 July 2010</span></dd><dt><span data-lang="es">Estado</span><span data-lang="en">Status</span></dt><dd><span data-lang="es">Vigente como himno del cantón</span><span data-lang="en">In force as the anthem of the canton</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Himno compuesto para el cantón Gonzalo Pizarro, cabecera cantonal Lumbaqui, en Sucumbíos.</p>
 <p>La obra resultó ganadora del concurso público convocado por el GAD Municipal entre el 21 de febrero y el 4 de julio de 2010. En julio de 2015, durante el XXIX aniversario de cantonización, el municipio rindió homenaje oficial al autor.</p>
 <p>Un himno oficial impone condiciones distintas a las de una obra de concierto: debe ser cantable por una población no especialista, tener una tesitura cómoda, una forma breve y un cierre que funcione en actos públicos. La escritura se ajustó a esas restricciones desde el inicio.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Anthem composed for the canton of Gonzalo Pizarro, whose capital is Lumbaqui, in Sucumbíos.</p>
+<p>The work won the public competition held by the Municipal GAD between 21 February and 4 July 2010. In July 2015, during the 29th anniversary of the canton, the municipality paid official tribute to the author.</p>
+<p>An official anthem imposes conditions different from those of a concert work: it must be singable by a non-specialist population, have a comfortable tessitura, a short form and a close that works in public ceremonies. The writing adjusted to those restrictions from the outset.</p>
   </div>
 </article>
 </main>
@@ -71,7 +121,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

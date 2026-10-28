@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guitarra — Cadenza Inc.</title>
-<meta name="description" content="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo.">
-<meta property="og:title" content="Guitarra — Cadenza Inc.">
-<meta property="og:description" content="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo.">
+<title data-es="Guitarra — Cadenza Inc." data-en="Guitar — Cadenza Inc.">Guitarra — Cadenza Inc.</title>
+<meta name="description" content="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo." data-es="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo." data-en="Instrumental training from beginner level to concert repertoire, with technical and interpretive work.">
+<meta property="og:title" content="Guitarra — Cadenza Inc." data-es="Guitarra — Cadenza Inc." data-en="Guitar — Cadenza Inc.">
+<meta property="og:description" content="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo." data-es="Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo." data-en="Instrumental training from beginner level to concert repertoire, with technical and interpretive work.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,29 +80,43 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/pedagogia.html">Pedagogia</a> / Guitarra</p>
-    <h1>Guitarra</h1>
-    <p class="sumilla">Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo.</p>
+    <p class="migas"><a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a> / <span data-lang="es">Guitarra</span><span data-lang="en">Guitar</span></p>
+    <h1><span data-lang="es">Guitarra</span><span data-lang="en">Guitar</span></h1>
+    <p class="sumilla"><span data-lang="es">Formación instrumental desde nivel inicial hasta repertorio de concierto, con trabajo técnico e interpretativo.</span><span data-lang="en">Instrumental training from beginner level to concert repertoire, with technical and interpretive work.</span></p>
   </header>
-  <dl class="datos"><dt>Institución</dt><dd>Conservatorio Nacional de Música</dd><dt>Desde</dt><dd>Octubre de 2014</dd><dt>Modalidad</dt><dd>Clase individual y taller grupal</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Institución</span><span data-lang="en">Institution</span></dt><dd><span data-lang="es">Conservatorio Nacional de Música</span><span data-lang="en">Conservatorio Nacional de Música</span></dd><dt><span data-lang="es">Desde</span><span data-lang="en">Since</span></dt><dd><span data-lang="es">Octubre de 2014</span><span data-lang="en">October 2014</span></dd><dt><span data-lang="es">Modalidad</span><span data-lang="en">Format</span></dt><dd><span data-lang="es">Clase individual y taller grupal</span><span data-lang="en">Individual lesson and group workshop</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>La asignatura de guitarra se organiza en tres ejes que avanzan en paralelo: técnica, lectura y repertorio.</p>
 <p><strong>Técnica.</strong> Posición de manos, producción de sonido, articulación, ligados, cejilla y control dinámico. El trabajo técnico se hace sobre ejercicios breves que después reaparecen en el repertorio, para que el estudiante advierta para qué sirve lo que practica.</p>
 <p><strong>Lectura.</strong> Solfeo aplicado al instrumento, lectura a primera vista y comprensión de la textura. Un guitarrista que solo lee tablatura queda limitado; la formación apunta a la lectura en notación estándar.</p>
 <p><strong>Repertorio.</strong> Obras originales para guitarra y transcripciones, ordenadas por dificultad. Cada nivel incluye al menos una obra del repertorio ecuatoriano y latinoamericano.</p>
 <p>Además del trabajo individual, la asignatura se apoya en el ensamble de guitarras, donde el estudiante aplica lo aprendido en una situación de escucha compartida.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>The guitar course is organised around three axes that move forward in parallel: technique, reading and repertoire.</p>
+<p><strong>Technique.</strong> Hand position, sound production, articulation, slurs, barre and dynamic control. Technical work is done on short exercises that later reappear in the repertoire, so that the student sees what the practice is for.</p>
+<p><strong>Reading.</strong> Solfège applied to the instrument, sight-reading and understanding of texture. A guitarist who reads only tablature stays limited; the training aims at reading in standard notation.</p>
+<p><strong>Repertoire.</strong> Original works for guitar and transcriptions, ordered by difficulty. Each level includes at least one work from the Ecuadorian and Latin American repertoire.</p>
+<p>Beyond individual work, the course relies on the guitar ensemble, where the student applies what has been learned in a situation of shared listening.</p>
   </div>
 </article>
 </main>
@@ -73,7 +125,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

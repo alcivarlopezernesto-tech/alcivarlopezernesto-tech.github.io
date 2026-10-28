@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Materiales para ensambles y orquestas — Cadenza Inc.</title>
-<meta name="description" content="Preparación de juegos completos de partituras y partes para ensayo y concierto.">
-<meta property="og:title" content="Materiales para ensambles y orquestas — Cadenza Inc.">
-<meta property="og:description" content="Preparación de juegos completos de partituras y partes para ensayo y concierto.">
+<title data-es="Materiales para ensambles y orquestas — Cadenza Inc." data-en="Materials for ensembles and orchestras — Cadenza Inc.">Materiales para ensambles y orquestas — Cadenza Inc.</title>
+<meta name="description" content="Preparación de juegos completos de partituras y partes para ensayo y concierto." data-es="Preparación de juegos completos de partituras y partes para ensayo y concierto." data-en="Preparation of complete sets of scores and parts for rehearsal and concert.">
+<meta property="og:title" content="Materiales para ensambles y orquestas — Cadenza Inc." data-es="Materiales para ensambles y orquestas — Cadenza Inc." data-en="Materials for ensembles and orchestras — Cadenza Inc.">
+<meta property="og:description" content="Preparación de juegos completos de partituras y partes para ensayo y concierto." data-es="Preparación de juegos completos de partituras y partes para ensayo y concierto." data-en="Preparation of complete sets of scores and parts for rehearsal and concert.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,27 +80,39 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/estudio.html">Estudio</a> / Materiales para ensambles y orquestas</p>
-    <h1>Materiales para ensambles y orquestas</h1>
-    <p class="sumilla">Preparación de juegos completos de partituras y partes para ensayo y concierto.</p>
+    <p class="migas"><a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a> / <span data-lang="es">Materiales para ensambles y orquestas</span><span data-lang="en">Materials for ensembles and orchestras</span></p>
+    <h1><span data-lang="es">Materiales para ensambles y orquestas</span><span data-lang="en">Materials for ensembles and orchestras</span></h1>
+    <p class="sumilla"><span data-lang="es">Preparación de juegos completos de partituras y partes para ensayo y concierto.</span><span data-lang="en">Preparation of complete sets of scores and parts for rehearsal and concert.</span></p>
   </header>
-  <dl class="datos"><dt>Incluye</dt><dd>Partitura general, partes, marcas de ensayo, cues y paginación revisada</dd><dt>Formato</dt><dd>PDF listo para impresión y archivo editable</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Includes</span><span data-lang="en">Includes</span></dt><dd><span data-lang="es">Partitura general, partes, marcas de ensayo, cues y paginación revisada</span><span data-lang="en">Full score, parts, rehearsal marks, cues and checked pagination</span></dd><dt><span data-lang="es">Format</span><span data-lang="en">Format</span></dt><dd><span data-lang="es">PDF listo para impresión y archivo editable</span><span data-lang="en">Print-ready PDF and editable file</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Preparación del material que un ensamble necesita para trabajar: partitura general, partes individuales, marcas de ensayo, cues en los silencios largos, paginación que evite vueltas de página incómodas y transposiciones definitivas.</p>
 <p>Un juego de partes mal preparado consume tiempo de ensayo en preguntas que el papel debería resolver. La diferencia entre un material profesional y uno casero se mide en minutos perdidos por ensayo.</p>
 <p>Se entrega listo para impresión, con una prueba de lectura previa cuando el plazo lo permite.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Preparation of the material an ensemble needs in order to work: full score, individual parts, rehearsal marks, cues in the long rests, pagination that avoids awkward page turns and final transpositions.</p>
+<p>A badly prepared set of parts spends rehearsal time on questions that paper should have settled. The difference between professional material and a homemade one is measured in minutes lost per rehearsal.</p>
+<p>It is delivered print-ready, with a reading test beforehand when the schedule allows it.</p>
   </div>
 </article>
 </main>
@@ -71,7 +121,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

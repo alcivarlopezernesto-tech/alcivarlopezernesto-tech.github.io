@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Himno a la Parroquia El Reventador — Cadenza Inc.</title>
-<meta name="description" content="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.">
-<meta property="og:title" content="Himno a la Parroquia El Reventador — Cadenza Inc.">
-<meta property="og:description" content="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.">
+<title data-es="Himno a la Parroquia El Reventador — Cadenza Inc." data-en="Anthem to the Parish of El Reventador — Cadenza Inc.">Himno a la Parroquia El Reventador — Cadenza Inc.</title>
+<meta name="description" content="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014." data-es="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014." data-en="Parish anthem composed in 2010, certified by the Parish GAD in 2014.">
+<meta property="og:title" content="Himno a la Parroquia El Reventador — Cadenza Inc." data-es="Himno a la Parroquia El Reventador — Cadenza Inc." data-en="Anthem to the Parish of El Reventador — Cadenza Inc.">
+<meta property="og:description" content="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014." data-es="Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014." data-en="Parish anthem composed in 2010, certified by the Parish GAD in 2014.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,27 +80,39 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html" class="activo">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/obra.html">Obra</a> / Himno a la Parroquia El Reventador</p>
-    <h1>Himno a la Parroquia El Reventador</h1>
-    <p class="sumilla">Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</p>
+    <p class="migas"><a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a> / <span data-lang="es">Himno a la Parroquia El Reventador</span><span data-lang="en">Anthem to the Parish of El Reventador</span></p>
+    <h1><span data-lang="es">Himno a la Parroquia El Reventador</span><span data-lang="en">Anthem to the Parish of El Reventador</span></h1>
+    <p class="sumilla"><span data-lang="es">Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</span><span data-lang="en">Parish anthem composed in 2010, certified by the Parish GAD in 2014.</span></p>
   </header>
-  <dl class="datos"><dt>Género</dt><dd>Himno oficial</dd><dt>Año</dt><dd>2010</dd><dt>Certificación</dt><dd>GAD Parroquial El Reventador, Gonzalo Pizarro, Sucumbíos, 29 de julio de 2014</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Género</span><span data-lang="en">Genre</span></dt><dd><span data-lang="es">Himno oficial</span><span data-lang="en">Official anthem</span></dd><dt><span data-lang="es">Año</span><span data-lang="en">Year</span></dt><dd><span data-lang="es">2010</span><span data-lang="en">2010</span></dd><dt><span data-lang="es">Certificación</span><span data-lang="en">Certification</span></dt><dd><span data-lang="es">GAD Parroquial El Reventador, Gonzalo Pizarro, Sucumbíos, 29 de julio de 2014</span><span data-lang="en">GAD Parroquial El Reventador, Gonzalo Pizarro, Sucumbíos, 29 July 2014</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Himno compuesto en 2010 para la parroquia El Reventador, en el cantón Gonzalo Pizarro, provincia de Sucumbíos.</p>
 <p>La obra fue certificada oficialmente por el GAD Parroquial el 29 de julio de 2014, lo que acredita su condición de himno parroquial y su uso en actos cívicos.</p>
 <p>Al igual que el himno cantonal del mismo año, la escritura prioriza la inteligibilidad del texto, la facilidad de entonación y la posibilidad de interpretación por voces no entrenadas.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Anthem composed in 2010 for the parish of El Reventador, in the canton of Gonzalo Pizarro, province of Sucumbíos.</p>
+<p>The work was officially certified by the Parish GAD on 29 July 2014, which confirms its status as parish anthem and its use in civic ceremonies.</p>
+<p>As with the cantonal anthem of the same year, the writing gives priority to the intelligibility of the text, ease of intonation and the possibility of performance by untrained voices.</p>
   </div>
 </article>
 </main>
@@ -71,7 +121,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

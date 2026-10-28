@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$titulo</title>
-<meta name="description" content="$descripcion">
-<meta property="og:title" content="$titulo">
-<meta property="og:description" content="$descripcion">
+<title data-es="$titulo" data-en="$titulo_en">$titulo</title>
+<meta name="description" content="$descripcion" data-es="$descripcion" data-en="$descripcion_en">
+<meta property="og:title" content="$titulo" data-es="$titulo" data-en="$titulo_en">
+<meta property="og:description" content="$descripcion" data-es="$descripcion" data-en="$descripcion_en">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="$clase">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido">$salto</a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -44,6 +82,11 @@
   <nav class="navegacion" id="nav">
       $nav
   </nav>
+  <div class="idioma" role="group" aria-label="$idioma_etiqueta">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
@@ -54,7 +97,7 @@ $cuerpo
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · $lema</p>
   <p>Quito, Ecuador · <a href="mailto:$correo">$correo</a></p>
-  <p class="pie-fino">© $anio Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© $anio Cadenza Inc. $derechos</p>
 </footer>
 
 </body>

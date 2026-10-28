@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" data-idioma="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-es="Arreglos — Cadenza Inc." data-en="Arrangements — Cadenza Inc.">Arreglos — Cadenza Inc.</title>
+<meta name="description" content="Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música." data-es="Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música." data-en="Six arrangements on video: four recordings conducted by the author, from the Museo del Pasillo and the Casa Mejía, and two from the Conservatorio Superior Nacional de Música.">
+<meta property="og:title" content="Arreglos — Cadenza Inc." data-es="Arreglos — Cadenza Inc." data-en="Arrangements — Cadenza Inc.">
+<meta property="og:description" content="Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música." data-es="Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música." data-en="Six arrangements on video: four recordings conducted by the author, from the Museo del Pasillo and the Casa Mejía, and two from the Conservatorio Superior Nacional de Música.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="/estatico/img/logo.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
+<link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cadenza Inc.",
+  "slogan": "The things as they are",
+  "url": "https://cadenzainc.com",
+  "logo": "https://cadenzainc.com/estatico/img/logo.jpg",
+  "email": "alcivarlopezernesto@gmail.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Ernesto Alcívar López",
+    "jobTitle": "Compositor, arreglista y docente"
+  },
+  "address": {"@type": "PostalAddress", "addressLocality": "Quito", "addressCountry": "EC"}
+}
+</script>
+</head>
+<body class="">
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
+
+<header class="cabecera">
+  <a class="marca" href="/">
+    <img src="/estatico/img/logo.jpg" alt="Cadenza Inc." width="56" height="56">
+    <span class="marca-texto">
+      <strong>Cadenza Inc.</strong>
+      <em>The things as they are</em>
+    </span>
+  </a>
+  <nav class="navegacion" id="nav">
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
+  </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
+</header>
+
+<main id="contenido">
+<article class="ficha ficha-ancha">
+  <header class="ficha-cabecera">
+    <p class="migas"><a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a> / <span data-lang="es">Arreglos</span><span data-lang="en">Arrangements</span></p>
+    <h1><span data-lang="es">Arreglos</span><span data-lang="en">Arrangements</span></h1>
+    <p class="sumilla"><span data-lang="es">Seis arreglos en video: cuatro registros dirigidos por el autor, del Museo del Pasillo y la Casa Mejía, y dos del Conservatorio Superior Nacional de Música.</span><span data-lang="en">Six arrangements on video: four recordings conducted by the author, from the Museo del Pasillo and the Casa Mejía, and two from the Conservatorio Superior Nacional de Música.</span></p>
+  </header>
+  <div class="botones"><a class="boton" href="https://www.youtube.com/playlist?list=PLBuTiDsLFIdE" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.6v8.8l7-4.4z"/></svg><span data-lang="es">Ver la lista de reproducción</span><span data-lang="en">Watch the playlist</span></a></div>
+  <div class="galeria"><a class="miniatura" href="https://www.youtube.com/watch?v=4O3mJGIkvfM" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/4O3mJGIkvfM.jpg" alt="Video: Zagales a prisa" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">Zagales a prisa</span><span class="miniatura-meta">Anónimo · Museo del Pasillo · 4:06</span></a><a class="miniatura" href="https://www.youtube.com/watch?v=9s_Bpb75Ydg" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/9s_Bpb75Ydg.jpg" alt="Video: Hoy ha nacido el amor" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">Hoy ha nacido el amor</span><span class="miniatura-meta">Mario Godoy · Museo del Pasillo · 2:28</span></a><a class="miniatura" href="https://www.youtube.com/watch?v=ov-QzKV2nQI" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/ov-QzKV2nQI.jpg" alt="Video: El Niño del Juncal" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">El Niño del Juncal</span><span class="miniatura-meta">Segundo Cóndor · Museo del Pasillo · 3:07</span></a><a class="miniatura" href="https://www.youtube.com/watch?v=pZNvdcu8Xv4" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/pZNvdcu8Xv4.jpg" alt="Video: Colores" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">Colores</span><span class="miniatura-meta">Jorge Oviedo · Casa Mejía · 3:46</span></a><a class="miniatura" href="https://www.youtube.com/watch?v=-LUr76GDVKI" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/-LUr76GDVKI.jpg" alt="Video: Ombra mai fu" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">Ombra mai fu</span><span class="miniatura-meta">G. F. Haendel · Conservatorio · 5:06</span></a><a class="miniatura" href="https://www.youtube.com/watch?v=i38mcKGX2Y4" target="_blank" rel="noopener"><span class="miniatura-marco"><img src="/estatico/img/miniaturas/i38mcKGX2Y4.jpg" alt="Video: Coral BWV 140" width="640" height="360" loading="lazy"><span class="miniatura-play" aria-hidden="true"></span></span><span class="miniatura-titulo">Coral BWV 140</span><span class="miniatura-meta">J. S. Bach · Conservatorio · 4:12</span></a></div>
+  <dl class="datos"><dt><span data-lang="es">Tipo</span><span data-lang="en">Type</span></dt><dd><span data-lang="es">Arreglos</span><span data-lang="en">Arrangements</span></dd><dt><span data-lang="es">Arreglos</span><span data-lang="en">Arrangements</span></dt><dd><span data-lang="es">Seis</span><span data-lang="en">Six</span></dd><dt><span data-lang="es">Escenarios</span><span data-lang="en">Venues</span></dt><dd><span data-lang="es">Museo del Pasillo, Casa Mejía y Conservatorio Superior Nacional de Música</span><span data-lang="en">Museo del Pasillo, Casa Mejía and Conservatorio Superior Nacional de Música</span></dd><dt><span data-lang="es">Dirección</span><span data-lang="en">Direction</span></dt><dd><span data-lang="es">Del autor en los registros del Museo del Pasillo y de la Casa Mejía</span><span data-lang="en">By the author in the Museo del Pasillo and Casa Mejía recordings</span></dd><dt><span data-lang="es">Publicación</span><span data-lang="en">Release</span></dt><dd><span data-lang="es">15 y 16 de junio de 2026</span><span data-lang="en">15 and 16 June 2026</span></dd><dt><span data-lang="es">Estado</span><span data-lang="en">Status</span></dt><dd><span data-lang="es">Publicado en video</span><span data-lang="en">Published on video</span></dd></dl>
+  <div class="prosa" data-lang="es">
+    <p>Seis arreglos publicados en video, reunidos en la lista <em>Arreglos</em> del canal. Los registros son en vivo y provienen de tres escenarios: el Museo del Pasillo, la Casa Mejía —donde se grabó <em>Colores</em>— y el Conservatorio Superior Nacional de Música.</p>
+<h2>El repertorio</h2>
+<p>El punto de partida no es propio: son obras de otros que se vuelven a escribir para otro cuerpo sonoro. Un villancico anónimo (<em>Zagales a prisa</em>), dos canciones ecuatorianas de Mario Godoy y Segundo Cóndor, una pieza de Jorge Oviedo, el aria <em>Ombra mai fu</em> de Haendel y el coral de la cantata BWV 140 de Bach.</p>
+<h2>Qué hace un arreglo</h2>
+<p>Un arreglo no cambia la obra: cambia quién la toca. La línea original se conserva y el acompañamiento se resuelve en la plantilla disponible —voz con banda en unos registros, orquesta de cuerdas en otros—, de modo que la pieza suene escrita para ese medio y no adaptada a la fuerza.</p>
+<p>En el arreglo coral la restricción central es la tesitura: un reparto que ignora el registro cómodo de las voces obliga a la dirección a compensar con dinámica lo que debería resolver la escritura. Ese criterio se aplica también aquí, pieza por pieza.</p>
+<h2>Dirección musical</h2>
+<p>En los registros del Museo del Pasillo y en el de la Casa Mejía —donde se grabó <em>Colores</em>, de Jorge Oviedo— el trabajo no terminó en el arreglo: también dirigí la interpretación.</p>
+<p>Dirigir una toma en vivo son decisiones concretas que no quedan escritas en la partitura: fijar el tempo y el carácter antes de empezar, dar entradas y cortes, indicar dinámicas, escuchar el balance entre la voz y los instrumentos y sostener el pulso cuando el grupo se adelanta o se atrasa. El arreglo dice qué notas suenan; la dirección decide cómo suenan en ese momento y en ese lugar.</p>
+<p>Hacer las dos cosas tiene una ventaja de criterio: quien escribe el acompañamiento sabe qué necesita oír y qué puede pedir en el ensayo. También tiene un costo: no hay distancia entre lo escrito y lo ejecutado, así que el error de una parte no lo corrige la otra.</p>
+<p>Los dos registros restantes, en el Conservatorio Superior Nacional de Música, corresponden a orquesta de cuerdas.</p>
+<blockquote>
+<p>Las seis piezas se publicaron el 15 y 16 de junio de 2026. Las miniaturas de arriba abren cada video en YouTube.</p>
+</blockquote>
+<h2>Otras obras de arreglo</h2>
+<p>El <a href="/obra/arreglo-coro-femenino.html">arreglo para coro femenino</a> interpretado en el Festival de Villancicos organizado por Juan Eljuri, con primer lugar para el coro y certificación del Conservatorio Nacional de Música del 24 de abril de 2026.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Six arrangements published on video, gathered in the <em>Arreglos</em> playlist on the channel. The recordings are live and come from three venues: the Museo del Pasillo, the Casa Mejía —where <em>Colores</em> was recorded— and the Conservatorio Superior Nacional de Música.</p>
+<h2>The repertoire</h2>
+<p>The starting point is not my own: these are works by others, rewritten for a different body of sound. An anonymous <em>villancico</em> (<em>Zagales a prisa</em>), two Ecuadorian songs by Mario Godoy and Segundo Cóndor, a piece by Jorge Oviedo, the aria <em>Ombra mai fu</em> by Handel, and the chorale from Bach's Cantata BWV 140.</p>
+<h2>What an arrangement does</h2>
+<p>An arrangement does not change the work: it changes who plays it. The original line is kept and the accompaniment is solved for the ensemble at hand —voice with band in some recordings, string orchestra in others— so that the piece sounds written for that medium rather than forced onto it.</p>
+<p>In choral arranging the central constraint is tessitura: a distribution that ignores the comfortable register of the voices forces the conductor to compensate with dynamics what the writing should have solved. The same criterion applies here, piece by piece.</p>
+<h2>Musical direction</h2>
+<p>In the Museo del Pasillo recordings and in the Casa Mejía one —where <em>Colores</em>, by Jorge Oviedo, was recorded— the work did not end with the arrangement: I also conducted the performance.</p>
+<p>Conducting a live take means concrete decisions that are not written in the score: setting the tempo and character before starting, giving entries and cuts, indicating dynamics, listening to the balance between voice and instruments, and holding the pulse when the group rushes or drags. The arrangement says which notes sound; the direction decides how they sound at that moment and in that place.</p>
+<p>Doing both carries one advantage in judgement: whoever writes the accompaniment knows what needs to be heard and what can be asked for in rehearsal. It also carries a cost: there is no distance between what is written and what is played, so an error in one part is not corrected by the other.</p>
+<p>The two remaining recordings, at the Conservatorio Superior Nacional de Música, are for string orchestra.</p>
+<blockquote>
+<p>The six pieces were published on 15 and 16 June 2026. The thumbnails above open each video on YouTube.</p>
+</blockquote>
+<h2>Other arrangement work</h2>
+<p>The <a href="/obra/arreglo-coro-femenino.html">arrangement for female choir</a> performed at the Festival de Villancicos organised by Juan Eljuri, where the choir took first place and the Conservatorio Nacional de Música issued a certificate on 24 April 2026.</p>
+  </div>
+</article>
+</main>
+
+<footer class="pie">
+  <div class="pie-linea"></div>
+  <p><strong>Cadenza Inc.</strong> · The things as they are</p>
+  <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
+</footer>
+
+</body>
+</html>

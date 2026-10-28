@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tecnologías de escritura y síntesis sonora — Cadenza Inc.</title>
-<meta name="description" content="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical.">
-<meta property="og:title" content="Tecnologías de escritura y síntesis sonora — Cadenza Inc.">
-<meta property="og:description" content="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical.">
+<title data-es="Tecnologías de escritura y síntesis sonora — Cadenza Inc." data-en="Notation and sound-synthesis technologies — Cadenza Inc.">Tecnologías de escritura y síntesis sonora — Cadenza Inc.</title>
+<meta name="description" content="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical." data-es="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical." data-en="A line of work on LilyPond, SuperCollider and Python applied to notation, teaching and musical analysis.">
+<meta property="og:title" content="Tecnologías de escritura y síntesis sonora — Cadenza Inc." data-es="Tecnologías de escritura y síntesis sonora — Cadenza Inc." data-en="Notation and sound-synthesis technologies — Cadenza Inc.">
+<meta property="og:description" content="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical." data-es="Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical." data-en="A line of work on LilyPond, SuperCollider and Python applied to notation, teaching and musical analysis.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,30 +80,45 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/investigacion.html">Investigacion</a> / Tecnologías de escritura y síntesis sonora</p>
-    <h1>Tecnologías de escritura y síntesis sonora</h1>
-    <p class="sumilla">Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical.</p>
+    <p class="migas"><a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a> / <span data-lang="es">Tecnologías de escritura y síntesis sonora</span><span data-lang="en">Notation and sound-synthesis technologies</span></p>
+    <h1><span data-lang="es">Tecnologías de escritura y síntesis sonora</span><span data-lang="en">Notation and sound-synthesis technologies</span></h1>
+    <p class="sumilla"><span data-lang="es">Línea de trabajo sobre LilyPond, SuperCollider y Python aplicados a la escritura, la enseñanza y el análisis musical.</span><span data-lang="en">A line of work on LilyPond, SuperCollider and Python applied to notation, teaching and musical analysis.</span></p>
   </header>
-  <dl class="datos"><dt>Herramientas</dt><dd>LilyPond, SuperCollider, Python, LaTeX</dd><dt>Aplicación</dt><dd>Escritura musical, síntesis, documentación pedagógica y análisis de datos</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Herramientas</span><span data-lang="en">Tools</span></dt><dd><span data-lang="es">LilyPond, SuperCollider, Python, LaTeX</span><span data-lang="en">LilyPond, SuperCollider, Python, LaTeX</span></dd><dt><span data-lang="es">Aplicación</span><span data-lang="en">Use</span></dt><dd><span data-lang="es">Escritura musical, síntesis, documentación pedagógica y análisis de datos</span><span data-lang="en">Music notation, synthesis, teaching documentation and data analysis</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Línea de trabajo que sostiene la práctica docente y creativa con herramientas de código abierto.</p>
 <p><strong>LilyPond</strong> para escritura musical desde consola: partituras y partes generadas desde texto, con control tipográfico y posibilidad de reutilizar plantillas. Es la herramienta con la que se producen los materiales de clase.</p>
 <p><strong>SuperCollider</strong> para síntesis sonora y programación orientada a objetos: generación de material sonoro, procesamiento y experimentación con textura.</p>
 <p><strong>Python</strong> para análisis de datos y modelos de aprendizaje automático, aplicado tanto a la investigación del contrapunto como al procesamiento de materiales del curso.</p>
 <p><strong>LaTeX</strong> para documentación técnica y pedagógica con formato institucional.</p>
 <p>El criterio que ordena esta línea es simple: la herramienta debe reducir el trabajo repetitivo para dejar más tiempo a la decisión musical, no sustituirla.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>A line of work that supports teaching and creative practice with open-source tools.</p>
+<p><strong>LilyPond</strong> for notation from the command line: scores and parts generated from text, with typographic control and reusable templates. It is the tool used to produce the course materials.</p>
+<p><strong>SuperCollider</strong> for sound synthesis and object-oriented programming: generation of sound material, processing and experimentation with texture.</p>
+<p><strong>Python</strong> for data analysis and machine-learning models, applied both to counterpoint research and to the processing of course materials.</p>
+<p><strong>LaTeX</strong> for technical and teaching documentation with institutional formatting.</p>
+<p>The criterion that orders this line of work is simple: the tool should reduce repetitive work so that more time is left for musical decisions, not replace them.</p>
   </div>
 </article>
 </main>
@@ -74,7 +127,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

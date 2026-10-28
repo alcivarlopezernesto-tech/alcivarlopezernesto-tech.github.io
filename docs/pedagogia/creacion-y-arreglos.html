@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Creación y Arreglos — Cadenza Inc.</title>
-<meta name="description" content="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales.">
-<meta property="og:title" content="Creación y Arreglos — Cadenza Inc.">
-<meta property="og:description" content="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales.">
+<title data-es="Creación y Arreglos — Cadenza Inc." data-en="Composition and Arranging — Cadenza Inc.">Creación y Arreglos — Cadenza Inc.</title>
+<meta name="description" content="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales." data-es="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales." data-en="Composition and arranging from the musical idea to performance: procedures, instrumentation and writing for real players.">
+<meta property="og:title" content="Creación y Arreglos — Cadenza Inc." data-es="Creación y Arreglos — Cadenza Inc." data-en="Composition and Arranging — Cadenza Inc.">
+<meta property="og:description" content="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales." data-es="Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales." data-en="Composition and arranging from the musical idea to performance: procedures, instrumentation and writing for real players.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,28 +80,41 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/pedagogia.html">Pedagogia</a> / Creación y Arreglos</p>
-    <h1>Creación y Arreglos</h1>
-    <p class="sumilla">Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales.</p>
+    <p class="migas"><a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a> / <span data-lang="es">Creación y Arreglos</span><span data-lang="en">Composition and Arranging</span></p>
+    <h1><span data-lang="es">Creación y Arreglos</span><span data-lang="en">Composition and Arranging</span></h1>
+    <p class="sumilla"><span data-lang="es">Composición y arreglo desde la idea musical hasta la ejecución: procedimientos, formato instrumental y escritura para intérpretes reales.</span><span data-lang="en">Composition and arranging from the musical idea to performance: procedures, instrumentation and writing for real players.</span></p>
   </header>
-  <dl class="datos"><dt>Institución</dt><dd>Conservatorio Nacional de Música</dd><dt>Niveles</dt><dd>Creación y Arreglos I y II</dd><dt>Producto final</dt><dd>Obra original escrita, ensayada y estrenada</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Institución</span><span data-lang="en">Institution</span></dt><dd><span data-lang="es">Conservatorio Nacional de Música</span><span data-lang="en">Conservatorio Nacional de Música</span></dd><dt><span data-lang="es">Niveles</span><span data-lang="en">Levels</span></dt><dd><span data-lang="es">Creación y Arreglos I y II</span><span data-lang="en">Composition and Arranging I and II</span></dd><dt><span data-lang="es">Producto final</span><span data-lang="en">Final outcome</span></dt><dd><span data-lang="es">Obra original escrita, ensayada y estrenada</span><span data-lang="en">Original work written, rehearsed and premiered</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>La asignatura recorre el ciclo completo de la escritura musical: concebir una idea, planificarla, escribirla, corregirla con intérpretes y estrenarla.</p>
 <p><strong>Creación y Arreglos I.</strong> Célula, motivo, frase y período. Microforma. Los cinco procesos de intervención sobre el material: transcripción, adaptación, reducción, arreglo y composición original. Rearmonización, notas extrañas, imitación y variación. El nivel cierra con una obra breve para el formato disponible.</p>
 <p><strong>Creación y Arreglos II.</strong> Formas mayores: tema y variaciones, música programática, forma sonata y rondo, formas de la música popular. Contrapunto aplicado. El nivel cierra con una obra original de tres a siete minutos, escrita para un ensamble real, ensayada y estrenada en concierto.</p>
 <p>La evaluación combina el resultado sonoro con el registro del proceso: análisis, bocetos, versiones descartadas y diario de ensayos.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>The course covers the full cycle of musical writing: conceiving an idea, planning it, writing it, correcting it with players and premiering it.</p>
+<p><strong>Composition and Arranging I.</strong> Cell, motif, phrase and period. Microform. The five procedures for working on material: transcription, adaptation, reduction, arrangement and original composition. Reharmonisation, non-chord tones, imitation and variation. The level closes with a short work for the available ensemble.</p>
+<p><strong>Composition and Arranging II.</strong> Larger forms: theme and variations, programme music, sonata form and rondo, forms of popular music. Applied counterpoint. The level closes with an original work of three to seven minutes, written for a real ensemble, rehearsed and premiered in concert.</p>
+<p>Assessment combines the sounding result with a record of the process: analysis, sketches, discarded versions and a rehearsal journal.</p>
   </div>
 </article>
 </main>
@@ -72,7 +123,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

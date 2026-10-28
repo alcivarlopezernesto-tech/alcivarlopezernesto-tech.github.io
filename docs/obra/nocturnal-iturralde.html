@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nocturnal — levantamiento digital — Cadenza Inc.</title>
-<meta name="description" content="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.">
-<meta property="og:title" content="Nocturnal — levantamiento digital — Cadenza Inc.">
-<meta property="og:description" content="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.">
+<title data-es="Nocturnal — levantamiento digital — Cadenza Inc." data-en="Nocturnal — digital transcription — Cadenza Inc.">Nocturnal — levantamiento digital — Cadenza Inc.</title>
+<meta name="description" content="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital." data-es="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital." data-en="Pasillo by Homero Iturralde in Carlos Bonilla Chávez&#x27;s arrangement, reconstructed in digital notation.">
+<meta property="og:title" content="Nocturnal — levantamiento digital — Cadenza Inc." data-es="Nocturnal — levantamiento digital — Cadenza Inc." data-en="Nocturnal — digital transcription — Cadenza Inc.">
+<meta property="og:description" content="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital." data-es="Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital." data-en="Pasillo by Homero Iturralde in Carlos Bonilla Chávez&#x27;s arrangement, reconstructed in digital notation.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,28 +80,41 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html" class="activo">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/obra.html">Obra</a> / Nocturnal — levantamiento digital</p>
-    <h1>Nocturnal — levantamiento digital</h1>
-    <p class="sumilla">Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.</p>
+    <p class="migas"><a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a> / <span data-lang="es">Nocturnal — levantamiento digital</span><span data-lang="en">Nocturnal — digital transcription</span></p>
+    <h1><span data-lang="es">Nocturnal — levantamiento digital</span><span data-lang="en">Nocturnal — digital transcription</span></h1>
+    <p class="sumilla"><span data-lang="es">Pasillo de Homero Iturralde en el arreglo de Carlos Bonilla Chávez, reconstruido en notación digital.</span><span data-lang="en">Pasillo by Homero Iturralde in Carlos Bonilla Chávez&#x27;s arrangement, reconstructed in digital notation.</span></p>
   </header>
-  <dl class="datos"><dt>Obra original</dt><dd>Homero Iturralde</dd><dt>Arreglo</dt><dd>Carlos Bonilla Chávez</dd><dt>Duración</dt><dd>4 minutos</dd><dt>Año</dt><dd>2017</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Obra original</span><span data-lang="en">Original work</span></dt><dd><span data-lang="es">Homero Iturralde</span><span data-lang="en">Homero Iturralde</span></dd><dt><span data-lang="es">Arreglo</span><span data-lang="en">Arrangement</span></dt><dd><span data-lang="es">Carlos Bonilla Chávez</span><span data-lang="en">Carlos Bonilla Chávez</span></dd><dt><span data-lang="es">Duración</span><span data-lang="en">Duration</span></dt><dd><span data-lang="es">4 minutos</span><span data-lang="en">4 minutes</span></dd><dt><span data-lang="es">Año</span><span data-lang="en">Year</span></dt><dd><span data-lang="es">2017</span><span data-lang="en">2017</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Levantamiento digital del pasillo <em>Nocturnal</em>, de Homero Iturralde, en el arreglo de Carlos Bonilla Chávez.</p>
 <p>El trabajo consistió en reconstruir la partitura en notación digital a partir del material disponible, verificando alturas, figuraciones y articulaciones, y produciendo un documento legible y editable que permita su ejecución y su conservación.</p>
 <p>El valor de este tipo de trabajo es patrimonial antes que creativo: se trata de evitar que el material se pierda por deterioro del papel o por la imposibilidad de leer copias manuscritas.</p>
 <p>Duración aproximada: cuatro minutos. Depositado en la biblioteca del Conservatorio Nacional de Música en 2017.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Digital transcription of the pasillo <em>Nocturnal</em>, by Homero Iturralde, in Carlos Bonilla Chávez's arrangement.</p>
+<p>The work consisted of rebuilding the score in digital notation from the available material, checking pitches, rhythmic figures and articulations, and producing a legible, editable document that allows the work to be performed and preserved.</p>
+<p>The value of this kind of work is patrimonial rather than creative: it is about keeping the material from being lost to paper decay or to the impossibility of reading handwritten copies.</p>
+<p>Approximate duration: four minutes. Deposited in the library of the Conservatorio Nacional de Música in 2017.</p>
   </div>
 </article>
 </main>
@@ -72,7 +123,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Estudio — Cadenza Inc.</title>
-<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
-<meta property="og:title" content="Estudio — Cadenza Inc.">
-<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
+<title data-es="Estudio — Cadenza Inc." data-en="Studio — Cadenza Inc.">Estudio — Cadenza Inc.</title>
+<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
+<meta property="og:title" content="Estudio — Cadenza Inc." data-es="Estudio — Cadenza Inc." data-en="Studio — Cadenza Inc.">
+<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,40 +80,45 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html" class="activo"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <section class="cabecera-seccion">
-  <h1>Estudio</h1>
-  <p class="entrada"><p>Trabajo por encargo: arreglos, orquestación, levantamiento digital de partituras y preparación de materiales para ensambles y orquestas.</p></p>
+  <h1><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></h1>
+  <div data-lang="es"><p>Trabajo por encargo: arreglos, orquestación, levantamiento digital de partituras y preparación de materiales para ensambles y orquestas.</p></div><div data-lang="en"><p>Work on commission: arrangements, orchestration, digital transcription of scores and preparation of materials for ensembles and orchestras.</p></div>
 </section>
 <section class="rejilla">
 <a class="tarjeta" href="/estudio/arreglos.html">
-  <span class="tarjeta-meta">Estudio · por encargo</span>
-  <h3>Arreglos y orquestación</h3>
-  <p>Escritura de arreglos para coro, ensamble y orquesta a partir de una obra existente.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Estudio · por encargo</span><span data-lang="en">Studio · on commission</span></span>
+  <h3><span data-lang="es">Arreglos y orquestación</span><span data-lang="en">Arranging and orchestration</span></h3>
+  <p><span data-lang="es">Escritura de arreglos para coro, ensamble y orquesta a partir de una obra existente.</span><span data-lang="en">Writing arrangements for choir, ensemble and orchestra from an existing work.</span></p>
 </a>
 <a class="tarjeta" href="/estudio/asesoria-pedagogica.html">
-  <span class="tarjeta-meta">Estudio · por encargo</span>
-  <h3>Asesoría pedagógica musical</h3>
-  <p>Diseño de programas, guías metodológicas y criterios de evaluación para instituciones y docentes.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Estudio · por encargo</span><span data-lang="en">Studio · on commission</span></span>
+  <h3><span data-lang="es">Asesoría pedagógica musical</span><span data-lang="en">Music teaching consultancy</span></h3>
+  <p><span data-lang="es">Diseño de programas, guías metodológicas y criterios de evaluación para instituciones y docentes.</span><span data-lang="en">Design of programmes, methodological guides and assessment criteria for institutions and teachers.</span></p>
 </a>
 <a class="tarjeta" href="/estudio/levantamiento-digital.html">
-  <span class="tarjeta-meta">Estudio · por encargo</span>
-  <h3>Levantamiento digital de partituras</h3>
-  <p>Reconstrucción en notación digital de obras manuscritas o impresas, con verificación de partes.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Estudio · por encargo</span><span data-lang="en">Studio · on commission</span></span>
+  <h3><span data-lang="es">Levantamiento digital de partituras</span><span data-lang="en">Digital transcription of scores</span></h3>
+  <p><span data-lang="es">Reconstrucción en notación digital de obras manuscritas o impresas, con verificación de partes.</span><span data-lang="en">Rebuilding manuscript or printed works in digital notation, with the parts checked against the score.</span></p>
 </a>
 <a class="tarjeta" href="/estudio/materiales-de-ensamble.html">
-  <span class="tarjeta-meta">Estudio · por encargo</span>
-  <h3>Materiales para ensambles y orquestas</h3>
-  <p>Preparación de juegos completos de partituras y partes para ensayo y concierto.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Estudio · por encargo</span><span data-lang="en">Studio · on commission</span></span>
+  <h3><span data-lang="es">Materiales para ensambles y orquestas</span><span data-lang="en">Materials for ensembles and orchestras</span></h3>
+  <p><span data-lang="es">Preparación de juegos completos de partituras y partes para ensayo y concierto.</span><span data-lang="en">Preparation of complete sets of scores and parts for rehearsal and concert.</span></p>
 </a>
 </section>
 </main>
@@ -84,7 +127,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

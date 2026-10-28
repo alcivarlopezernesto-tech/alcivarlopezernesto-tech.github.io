@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc.</title>
-<meta name="description" content="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.">
-<meta property="og:title" content="Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc.">
-<meta property="og:description" content="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.">
+<title data-es="Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc." data-en="Misa Popular Ecuatoriana — digital transcription — Cadenza Inc.">Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc.</title>
+<meta name="description" content="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE." data-es="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE." data-en="Five movements for mixed choir and orchestra, by Claudio Aizaga, digitally reconstructed for the OSNE.">
+<meta property="og:title" content="Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc." data-es="Misa Popular Ecuatoriana — levantamiento digital — Cadenza Inc." data-en="Misa Popular Ecuatoriana — digital transcription — Cadenza Inc.">
+<meta property="og:description" content="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE." data-es="Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE." data-en="Five movements for mixed choir and orchestra, by Claudio Aizaga, digitally reconstructed for the OSNE.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,27 +80,39 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html" class="activo">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html" class="activo"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/obra.html">Obra</a> / Misa Popular Ecuatoriana — levantamiento digital</p>
-    <h1>Misa Popular Ecuatoriana — levantamiento digital</h1>
-    <p class="sumilla">Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</p>
+    <p class="migas"><a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a> / <span data-lang="es">Misa Popular Ecuatoriana — levantamiento digital</span><span data-lang="en">Misa Popular Ecuatoriana — digital transcription</span></p>
+    <h1><span data-lang="es">Misa Popular Ecuatoriana — levantamiento digital</span><span data-lang="en">Misa Popular Ecuatoriana — digital transcription</span></h1>
+    <p class="sumilla"><span data-lang="es">Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</span><span data-lang="en">Five movements for mixed choir and orchestra, by Claudio Aizaga, digitally reconstructed for the OSNE.</span></p>
   </header>
-  <dl class="datos"><dt>Autor de la obra</dt><dd>Claudio Aizaga</dd><dt>Formación</dt><dd>Coro mixto y orquesta</dd><dt>Cliente</dt><dd>Orquesta Sinfónica Nacional del Ecuador</dd><dt>Año</dt><dd>2013</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Autor de la obra</span><span data-lang="en">Composer</span></dt><dd><span data-lang="es">Claudio Aizaga</span><span data-lang="en">Claudio Aizaga</span></dd><dt><span data-lang="es">Formación</span><span data-lang="en">Instrumentation</span></dt><dd><span data-lang="es">Coro mixto y orquesta</span><span data-lang="en">Mixed choir and orchestra</span></dd><dt><span data-lang="es">Cliente</span><span data-lang="en">Client</span></dt><dd><span data-lang="es">Orquesta Sinfónica Nacional del Ecuador</span><span data-lang="en">Orquesta Sinfónica Nacional del Ecuador</span></dd><dt><span data-lang="es">Año</span><span data-lang="en">Year</span></dt><dd><span data-lang="es">2013</span><span data-lang="en">2013</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Levantamiento digital de los cinco movimientos de la <em>Misa Popular Ecuatoriana</em>, de Claudio Aizaga, para coro mixto y orquesta.</p>
 <p>El trabajo se realizó en 2013 para la Orquesta Sinfónica Nacional del Ecuador, dentro de un encargo de 180 horas que incluyó partituras generales y partes individuales. El proceso exige reconstruir la obra en un editor de notación, verificar la correspondencia entre partes y partitura general, y producir materiales de ensayo legibles.</p>
 <p>Es un trabajo de precisión: un error de altura o de octava en una parte individual se descubre en el ensayo, no en el archivo.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Digital transcription of the five movements of the <em>Misa Popular Ecuatoriana</em>, by Claudio Aizaga, for mixed choir and orchestra.</p>
+<p>The work was done in 2013 for the Orquesta Sinfónica Nacional del Ecuador, within a 180-hour commission that included full scores and individual parts. The process requires rebuilding the work in a notation editor, checking that parts and full score match, and producing legible rehearsal materials.</p>
+<p>It is precision work: a wrong pitch or a wrong octave in an individual part is discovered in rehearsal, not in the file.</p>
   </div>
 </article>
 </main>
@@ -71,7 +121,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

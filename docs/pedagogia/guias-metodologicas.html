@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guías metodológicas — Cadenza Inc.</title>
-<meta name="description" content="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada.">
-<meta property="og:title" content="Guías metodológicas — Cadenza Inc.">
-<meta property="og:description" content="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada.">
+<title data-es="Guías metodológicas — Cadenza Inc." data-en="Methodological guides — Cadenza Inc.">Guías metodológicas — Cadenza Inc.</title>
+<meta name="description" content="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada." data-es="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada." data-en="Monthly course materials, with a week-by-week sequence, assessment criteria and verified bibliography.">
+<meta property="og:title" content="Guías metodológicas — Cadenza Inc." data-es="Guías metodológicas — Cadenza Inc." data-en="Methodological guides — Cadenza Inc.">
+<meta property="og:description" content="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada." data-es="Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada." data-en="Monthly course materials, with a week-by-week sequence, assessment criteria and verified bibliography.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,24 +80,31 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/pedagogia.html">Pedagogia</a> / Guías metodológicas</p>
-    <h1>Guías metodológicas</h1>
-    <p class="sumilla">Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada.</p>
+    <p class="migas"><a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a> / <span data-lang="es">Guías metodológicas</span><span data-lang="en">Methodological guides</span></p>
+    <h1><span data-lang="es">Guías metodológicas</span><span data-lang="en">Methodological guides</span></h1>
+    <p class="sumilla"><span data-lang="es">Materiales mensuales de las asignaturas, con secuencia semanal, criterios de evaluación y bibliografía verificada.</span><span data-lang="en">Monthly course materials, with a week-by-week sequence, assessment criteria and verified bibliography.</span></p>
   </header>
-  <dl class="datos"><dt>Alcance</dt><dd>Creación y Arreglos I y II, año lectivo 2026-2027</dd><dt>Estructura</dt><dd>Datos informativos, objetivo, contenidos, criterios, secuencia semanal, estrategias, recursos, audiciones y bibliografía APA</dd><dt>Uso</dt><dd>Material de trabajo del docente; disponible para consulta</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Alcance</span><span data-lang="en">Scope</span></dt><dd><span data-lang="es">Creación y Arreglos I y II, año lectivo 2026-2027</span><span data-lang="en">Composition and Arranging I and II, academic year 2026-2027</span></dd><dt><span data-lang="es">Estructura</span><span data-lang="en">Structure</span></dt><dd><span data-lang="es">Datos informativos, objetivo, contenidos, criterios, secuencia semanal, estrategias, recursos, audiciones y bibliografía APA</span><span data-lang="en">Course data, objective, contents, criteria, weekly sequence, strategies, resources, listening lists and APA bibliography</span></dd><dt><span data-lang="es">Uso</span><span data-lang="en">Use</span></dt><dd><span data-lang="es">Material de trabajo del docente; disponible para consulta</span><span data-lang="en">Working material for the teacher; available on request</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Cada mes de clase tiene una guía metodológica propia. No son programas: son documentos operativos que indican qué se enseña cada semana, con qué repertorio, cómo se evalúa y qué bibliografía sostiene cada afirmación.</p>
 <p>La estructura de cada guía es constante:</p>
 <ul>
@@ -74,6 +119,21 @@
 <p>Las guías se acompañan de orientaciones didácticas, errores frecuentes con su corrección y un instrumento de evaluación formativa por unidad.</p>
 <p>El material completo se comparte con docentes del área que lo soliciten.</p>
   </div>
+  <div class="prosa" data-lang="en">
+    <p>Every teaching month has a methodological guide of its own. They are not syllabi: they are working documents that state what is taught each week, with which repertoire, how it is assessed and which literature supports each claim.</p>
+<p>The structure of every guide is constant:</p>
+<ul>
+<li>Course data and the objective of the unit.</li>
+<li>Conceptual, procedural and attitudinal contents.</li>
+<li>Assessment criteria.</li>
+<li>Teaching sequence, week by week.</li>
+<li>Methodological strategies and resources.</li>
+<li>Recommended listening.</li>
+<li>Bibliography in APA 7th edition, verified.</li>
+</ul>
+<p>The guides come with teaching notes, common mistakes and how to correct them, and a formative assessment instrument for each unit.</p>
+<p>The complete material is shared with teachers in the field who request it.</p>
+  </div>
 </article>
 </main>
 
@@ -81,7 +141,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

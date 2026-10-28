@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc.</title>
-<meta name="description" content="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial.">
-<meta property="og:title" content="Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc.">
-<meta property="og:description" content="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial.">
+<title data-es="Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc." data-en="Computer-assisted generation of Baroque counterpoint with LSTM networks — Cadenza Inc.">Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc.</title>
+<meta name="description" content="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial." data-es="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial." data-en="Master&#x27;s thesis for the Master&#x27;s degree in Digital Tools for Data Analysis and Artificial Intelligence.">
+<meta property="og:title" content="Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc." data-es="Generación asistida de contrapunto barroco mediante LSTM — Cadenza Inc." data-en="Computer-assisted generation of Baroque counterpoint with LSTM networks — Cadenza Inc.">
+<meta property="og:description" content="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial." data-es="Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial." data-en="Master&#x27;s thesis for the Master&#x27;s degree in Digital Tools for Data Analysis and Artificial Intelligence.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,28 +80,41 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/investigacion.html">Investigacion</a> / Generación asistida de contrapunto barroco mediante LSTM</p>
-    <h1>Generación asistida de contrapunto barroco mediante LSTM</h1>
-    <p class="sumilla">Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial.</p>
+    <p class="migas"><a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a> / <span data-lang="es">Generación asistida de contrapunto barroco mediante LSTM</span><span data-lang="en">Computer-assisted generation of Baroque counterpoint with LSTM networks</span></p>
+    <h1><span data-lang="es">Generación asistida de contrapunto barroco mediante LSTM</span><span data-lang="en">Computer-assisted generation of Baroque counterpoint with LSTM networks</span></h1>
+    <p class="sumilla"><span data-lang="es">Trabajo de titulación de la Maestría en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial.</span><span data-lang="en">Master&#x27;s thesis for the Master&#x27;s degree in Digital Tools for Data Analysis and Artificial Intelligence.</span></p>
   </header>
-  <dl class="datos"><dt>Programa</dt><dd>Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e IA — ISTER Rumiñahui</dd><dt>Director</dt><dd>Ing. Juan Carlos Minango Negrete</dd><dt>Estado</dt><dd>En curso</dd><dt>Método</dt><dd>Redes LSTM entrenadas sobre corpus de contrapunto barroco</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Programa</span><span data-lang="en">Programme</span></dt><dd><span data-lang="es">Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e IA — ISTER Rumiñahui</span><span data-lang="en">Master&#x27;s in Digital Tools for Data Analysis and AI — ISTER Rumiñahui</span></dd><dt><span data-lang="es">Director</span><span data-lang="en">Supervisor</span></dt><dd><span data-lang="es">Ing. Juan Carlos Minango Negrete</span><span data-lang="en">Ing. Juan Carlos Minango Negrete</span></dd><dt><span data-lang="es">Estado</span><span data-lang="en">Status</span></dt><dd><span data-lang="es">Defensa 28/10/2026</span><span data-lang="en">Defence 28/10/2026</span></dd><dt><span data-lang="es">Método</span><span data-lang="en">Method</span></dt><dd><span data-lang="es">Redes LSTM entrenadas sobre corpus de contrapunto barroco</span><span data-lang="en">LSTM networks trained on a Baroque counterpoint corpus</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>Investigación aplicada sobre la generación asistida de contrapunto barroco mediante redes neuronales recurrentes de tipo LSTM.</p>
 <p>El problema que aborda es concreto: el contrapunto barroco es un sistema de reglas verificables —consonancias permitidas, movimiento de voces, preparación y resolución de disonancias—, lo que lo convierte en un dominio adecuado para evaluar si un modelo aprende la gramática del estilo o solo reproduce secuencias frecuentes.</p>
 <p>El trabajo incluye la construcción del corpus, la codificación de la entrada, el entrenamiento del modelo y la evaluación de los resultados contra las reglas del tratado. Un resultado negativo —que el modelo no aprenda la gramática— es un resultado válido y se reporta como tal.</p>
 <p>La investigación se desarrolla en paralelo a la docencia de armonía y contrapunto, y su producto previsto es un prototipo de asistencia a la escritura, no un sustituto del compositor.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>Applied research on the computer-assisted generation of Baroque counterpoint using LSTM recurrent neural networks.</p>
+<p>The problem it addresses is concrete: Baroque counterpoint is a system of verifiable rules —permitted consonances, voice movement, preparation and resolution of dissonances— which makes it a suitable domain for testing whether a model learns the grammar of the style or merely reproduces frequent sequences.</p>
+<p>The work includes building the corpus, encoding the input, training the model and evaluating the results against the rules of the treatise. A negative result —the model failing to learn the grammar— is a valid result and is reported as such.</p>
+<p>The research runs alongside the teaching of harmony and counterpoint, and its expected product is a writing-assistance prototype, not a substitute for the composer.</p>
   </div>
 </article>
 </main>
@@ -72,7 +123,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

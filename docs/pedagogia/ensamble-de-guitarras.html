@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ensamble de guitarras — Cadenza Inc.</title>
-<meta name="description" content="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto.">
-<meta property="og:title" content="Ensamble de guitarras — Cadenza Inc.">
-<meta property="og:description" content="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto.">
+<title data-es="Ensamble de guitarras — Cadenza Inc." data-en="Guitar ensemble — Cadenza Inc.">Ensamble de guitarras — Cadenza Inc.</title>
+<meta name="description" content="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto." data-es="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto." data-en="Ensemble practice with graded repertoire, listening between voices and concert preparation.">
+<meta property="og:title" content="Ensamble de guitarras — Cadenza Inc." data-es="Ensamble de guitarras — Cadenza Inc." data-en="Guitar ensemble — Cadenza Inc.">
+<meta property="og:description" content="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto." data-es="Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto." data-en="Ensemble practice with graded repertoire, listening between voices and concert preparation.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,27 +80,39 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
 <article class="ficha">
   <header class="ficha-cabecera">
-    <p class="migas"><a href="/pedagogia.html">Pedagogia</a> / Ensamble de guitarras</p>
-    <h1>Ensamble de guitarras</h1>
-    <p class="sumilla">Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto.</p>
+    <p class="migas"><a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a> / <span data-lang="es">Ensamble de guitarras</span><span data-lang="en">Guitar ensemble</span></p>
+    <h1><span data-lang="es">Ensamble de guitarras</span><span data-lang="en">Guitar ensemble</span></h1>
+    <p class="sumilla"><span data-lang="es">Práctica de conjunto con repertorio graduado, escucha entre voces y preparación de concierto.</span><span data-lang="en">Ensemble practice with graded repertoire, listening between voices and concert preparation.</span></p>
   </header>
-  <dl class="datos"><dt>Institución</dt><dd>Conservatorio Nacional de Música</dd><dt>Formación</dt><dd>Ensamble de guitarras, hasta cuatro voces</dd><dt>Repertorio</dt><dd>Ciclo propio de diez piezas progresivas y repertorio original</dd></dl>
-  <div class="prosa">
+  
+  
+  <dl class="datos"><dt><span data-lang="es">Institución</span><span data-lang="en">Institution</span></dt><dd><span data-lang="es">Conservatorio Nacional de Música</span><span data-lang="en">Conservatorio Nacional de Música</span></dd><dt><span data-lang="es">Formación</span><span data-lang="en">Instrumentation</span></dt><dd><span data-lang="es">Ensamble de guitarras, hasta cuatro voces</span><span data-lang="en">Guitar ensemble, up to four voices</span></dd><dt><span data-lang="es">Repertorio</span><span data-lang="en">Repertoire</span></dt><dd><span data-lang="es">Ciclo propio de diez piezas progresivas y repertorio original</span><span data-lang="en">Its own cycle of ten progressive pieces, plus original repertoire</span></dd></dl>
+  <div class="prosa" data-lang="es">
     <p>El ensamble es el lugar donde la formación individual se vuelve audible para el estudiante. Tocar solo desarrolla control; tocar con otros desarrolla escucha, balance y criterio de tempo.</p>
 <p>El taller trabaja con un ciclo propio de diez piezas graduadas, escritas para que cada voz tenga material con sentido propio y a la vez dependa de las demás. El repertorio se completa con obras originales para ensamble de guitarras.</p>
 <p>La preparación culmina en concierto. El proceso incluye ensayos por secciones, ensayo general sin detenciones y una prueba de lectura con intérprete externo, que revela los problemas que el compositor ya no ve por familiaridad.</p>
+  </div>
+  <div class="prosa" data-lang="en">
+    <p>The ensemble is where individual training becomes audible for the student. Playing alone develops control; playing with others develops listening, balance and a sense of tempo.</p>
+<p>The workshop works from its own cycle of ten graded pieces, written so that each voice has material with a meaning of its own while depending on the others. The repertoire is completed with original works for guitar ensemble.</p>
+<p>Preparation culminates in a concert. The process includes sectional rehearsals, a full run-through without stops and a reading session with a player from outside, which brings out the problems the composer no longer sees out of familiarity.</p>
   </div>
 </article>
 </main>
@@ -71,7 +121,7 @@
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>

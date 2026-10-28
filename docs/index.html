@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadenza Inc.</title>
-<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
-<meta property="og:title" content="Cadenza Inc.">
-<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador.">
+<title data-es="Cadenza Inc." data-en="Cadenza Inc.">Cadenza Inc.</title>
+<meta name="description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composition, arranging, music pedagogy and applied research. Ernesto Alcívar López, Quito, Ecuador.">
+<meta property="og:title" content="Cadenza Inc." data-es="Cadenza Inc." data-en="Cadenza Inc.">
+<meta property="og:description" content="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-es="Cadenza Inc. — composición, arreglo, pedagogía musical e investigación aplicada. Ernesto Alcívar López, Quito, Ecuador." data-en="Cadenza Inc. — composition, arranging, music pedagogy and applied research. Ernesto Alcívar López, Quito, Ecuador.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/estatico/img/logo.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
 <link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +69,7 @@
 </script>
 </head>
 <body class="portada">
-<a class="salto" href="#contenido">Ir al contenido</a>
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
 
 <header class="cabecera">
   <a class="marca" href="/">
@@ -42,36 +80,85 @@
     </span>
   </a>
   <nav class="navegacion" id="nav">
-      <a href="/obra.html">Obra</a>
-      <a href="/pedagogia.html">Pedagogía</a>
-      <a href="/investigacion.html">Investigación</a>
-      <a href="/estudio.html">Estudio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
 </header>
 
 <main id="contenido">
-<div class="prosa"><h1>Componer, enseñar, <em>investigar</em>.</h1>
+<div class="prosa" data-lang="es"><h1>Componer, interpretar, dirigir, enseñar e <em>investigar</em>.</h1>
 <div class="entrada-bloque">
-Cadenza Inc. reúne el trabajo de <strong>Ernesto Alcívar López</strong>: composición y arreglo para orquesta, coro y ensambles de guitarra; docencia musical en el Conservatorio Nacional de Música; e investigación aplicada sobre tecnología y análisis de datos en la enseñanza de la música.
+Cadenza Inc. reúne el trabajo de <strong>Ernesto Alcívar López</strong>: cinco oficios que se alimentan entre sí y que en la práctica rara vez se separan.
 </div>
 
-<h2>Tres líneas de trabajo</h2>
-<p><strong>Obra.</strong> Música escrita para instrumentos reales: obra orquestal, himnos oficiales, arreglos corales, ensambles de guitarra y levantamiento digital de partituras del patrimonio musical ecuatoriano.</p>
-<p><strong>Pedagogía.</strong> Doce años enseñando guitarra, armonía y creación en el Conservatorio Nacional de Música, con materiales metodológicos propios y formación continua en didáctica.</p>
-<p><strong>Investigación.</strong> Tecnología aplicada a la música: escritura y síntesis con LilyPond y SuperCollider, y modelos de aprendizaje automático para la generación asistida de contrapunto.</p></div><section class="destacadas"><h2>Obra reciente</h2><div class="rejilla"><a class="tarjeta" href="/obra/himno-el-reventador.html">
-  <span class="tarjeta-meta">Himno oficial · 2010</span>
-  <h3>Himno a la Parroquia El Reventador</h3>
-  <p>Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</p>
+<div class="oficios">
+<div class="oficio">
+<p class="oficio-t"><a href="/obra.html">Componer</a></p>
+<p class="oficio-d">Música escrita para instrumentos reales: obra orquestal, himnos oficiales, arreglos corales, ensambles de guitarra y levantamiento digital de partituras del patrimonio musical ecuatoriano.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t">Interpretar</p>
+<p class="oficio-d">La guitarra es el instrumento de trabajo: componer y arreglar desde el instrumento. Los registros de repertorio guitarrístico académico están en preparación.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/obra/arreglos.html">Dirigir</a></p>
+<p class="oficio-d">En los registros del Museo del Pasillo y de la Casa Mejía el arreglo se completó con la dirección: tempo, entradas, dinámicas y balance decididos en la toma.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/pedagogia.html">Enseñar</a></p>
+<p class="oficio-d">Doce años en el Conservatorio Nacional de Música: guitarra, armonía, creación y arreglos, ensamble de guitarras, y guías metodológicas escritas para esas asignaturas.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/investigacion.html">Investigar</a></p>
+<p class="oficio-d">Tecnología aplicada a la música —notación y síntesis— y modelos de aprendizaje automático para la enseñanza del contrapunto.</p>
+</div>
+</div></div><div class="prosa" data-lang="en"><h1>Composing, performing, conducting, teaching and <em>researching</em>.</h1>
+<div class="entrada-bloque">
+Cadenza Inc. gathers the work of <strong>Ernesto Alcívar López</strong>: five trades that feed one another and that in practice are rarely kept apart.
+</div>
+
+<div class="oficios">
+<div class="oficio">
+<p class="oficio-t"><a href="/obra.html">Composing</a></p>
+<p class="oficio-d">Music written for real instruments: orchestral work, official anthems, choral arrangements, guitar ensembles and digital transcription of scores from Ecuador's musical heritage.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t">Performing</p>
+<p class="oficio-d">The guitar is the working instrument: composing and arranging from the instrument itself. Recordings of academic guitar repertoire are in preparation.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/obra/arreglos.html">Conducting</a></p>
+<p class="oficio-d">In the Museo del Pasillo and Casa Mejía recordings the arrangement was completed with the direction: tempo, entries, dynamics and balance settled in the take.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/pedagogia.html">Teaching</a></p>
+<p class="oficio-d">Twelve years at the Conservatorio Nacional de Música: guitar, harmony, composition and arranging, guitar ensemble, and methodological guides written for those courses.</p>
+</div>
+<div class="oficio">
+<p class="oficio-t"><a href="/investigacion.html">Researching</a></p>
+<p class="oficio-d">Technology applied to music —notation and synthesis— and machine-learning models for the teaching of counterpoint.</p>
+</div>
+</div></div><section class="destacadas"><h2><span data-lang="es">Obra reciente</span><span data-lang="en">Recent work</span></h2><div class="rejilla"><a class="tarjeta" href="/obra/himno-el-reventador.html">
+  <span class="tarjeta-meta"><span data-lang="es">Himno oficial · 2010</span><span data-lang="en">Official anthem · 2010</span></span>
+  <h3><span data-lang="es">Himno a la Parroquia El Reventador</span><span data-lang="en">Anthem to the Parish of El Reventador</span></h3>
+  <p><span data-lang="es">Himno parroquial compuesto en 2010, certificado por el GAD Parroquial en 2014.</span><span data-lang="en">Parish anthem composed in 2010, certified by the Parish GAD in 2014.</span></p>
 </a><a class="tarjeta" href="/obra/himno-gonzalo-pizarro.html">
-  <span class="tarjeta-meta">Himno oficial · 2010</span>
-  <h3>Himno al Cantón Gonzalo Pizarro</h3>
-  <p>Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</p>
+  <span class="tarjeta-meta"><span data-lang="es">Himno oficial · 2010</span><span data-lang="en">Official anthem · 2010</span></span>
+  <h3><span data-lang="es">Himno al Cantón Gonzalo Pizarro</span><span data-lang="en">Anthem to the Canton of Gonzalo Pizarro</span></h3>
+  <p><span data-lang="es">Obra ganadora del concurso público convocado por el GAD Municipal de Lumbaqui (2010).</span><span data-lang="en">Winning entry in the public competition held by the Municipal GAD of Lumbaqui (2010).</span></p>
 </a><a class="tarjeta" href="/obra/misa-popular-ecuatoriana.html">
-  <span class="tarjeta-meta">Levantamiento digital · 2013</span>
-  <h3>Misa Popular Ecuatoriana — levantamiento digital</h3>
-  <p>Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</p>
+  <span class="tarjeta-meta"><span data-lang="es">Levantamiento digital · 2013</span><span data-lang="en">Digital transcription · 2013</span></span>
+  <h3><span data-lang="es">Misa Popular Ecuatoriana — levantamiento digital</span><span data-lang="en">Misa Popular Ecuatoriana — digital transcription</span></h3>
+  <p><span data-lang="es">Cinco movimientos para coro mixto y orquesta, de Claudio Aizaga, reconstruidos digitalmente para la OSNE.</span><span data-lang="en">Five movements for mixed choir and orchestra, by Claudio Aizaga, digitally reconstructed for the OSNE.</span></p>
 </a></div></section>
 </main>
 
@@ -79,7 +166,7 @@ Cadenza Inc. reúne el trabajo de <strong>Ernesto Alcívar López</strong>: comp
   <div class="pie-linea"></div>
   <p><strong>Cadenza Inc.</strong> · The things as they are</p>
   <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
-  <p class="pie-fino">© 2026 Cadenza Inc. Todos los derechos reservados.</p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 </body>
