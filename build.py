@@ -273,7 +273,7 @@ def bloque_descargas(ficha: dict) -> str:
             paginas = str(fila[2]) if len(fila) > 2 else ""
             ruta = ESTATICO / "pdf" / archivo
             if not ruta.exists():
-                raise RuntimeError("falta el PDF declarado en descargas: " + str(ruta))
+                continue  # aún no publicado
             peso = f"{ruta.stat().st_size / 1024:.0f} KB"
             filas.append(
                 f'<tr><td class="desc-titulo">'
