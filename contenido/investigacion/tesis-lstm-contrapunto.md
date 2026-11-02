@@ -7,6 +7,7 @@ datos:
   - ["Director|Supervisor", "director"]
   - ["Estado|Status", "estado"]
   - ["Método|Method", "metodo"]
+  - ["Páginas|Pages", "paginas"]
 programa: "Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e IA — ISTER Rumiñahui"
 director: "Ing. Juan Carlos Minango Negrete"
 estado: "Defensa 28/10/2026"
@@ -17,6 +18,10 @@ meta_en: "Research · 2026"
 programa_en: "Master's in Digital Tools for Data Analysis and AI — ISTER Rumiñahui"
 estado_en: "Defence 28/10/2026"
 metodo_en: "LSTM networks trained on a Baroque counterpoint corpus"
+paginas: "130"
+paginas_en: "130"
+enlaces:
+  - ["Leer la tesis completa — versión del autor (PDF)|Read the full thesis — author's version (PDF)", "/estatico/pdf/investigacion/tesis-lstm-contrapunto.pdf"]
 ---
 
 Investigación aplicada sobre la generación asistida de contrapunto barroco mediante redes neuronales recurrentes de tipo LSTM.

@@ -26,6 +26,20 @@ body{
   font-size:17px;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  /* texto corrido justificado a dos márgenes, con partición de palabras */
+  text-align:justify;
+  text-justify:inter-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  hyphenate-limit-chars:6 3 3;
+}
+
+/* elementos donde justificar no tiene sentido: títulos, etiquetas y navegación */
+h1,h2,h3,.portada h1,.oficio-t,.migas,.datos dt,.tarjeta-meta,.descargas th,
+.navegacion a,.marca-texto,.boton,.desc-num,.miniatura-meta,.salto{
+  text-align:left;
+  -webkit-hyphens:manual;
+  hyphens:manual;
 }
 
 /* ---------- accesibilidad ---------- */
