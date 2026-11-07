@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es" data-idioma="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-es="Currículum — Cadenza Inc." data-en="Resume — Cadenza Inc.">Currículum — Cadenza Inc.</title>
+<meta name="description" content="Currículum completo de Ernesto Alcívar López: trayectoria docente, formación, obra, certificaciones y reconocimientos." data-es="Currículum completo de Ernesto Alcívar López: trayectoria docente, formación, obra, certificaciones y reconocimientos." data-en="Full curriculum vitae of Ernesto Alcívar López: teaching career, training, works, certifications and distinctions.">
+<meta property="og:title" content="Currículum — Cadenza Inc." data-es="Currículum — Cadenza Inc." data-en="Resume — Cadenza Inc.">
+<meta property="og:description" content="Currículum completo de Ernesto Alcívar López: trayectoria docente, formación, obra, certificaciones y reconocimientos." data-es="Currículum completo de Ernesto Alcívar López: trayectoria docente, formación, obra, certificaciones y reconocimientos." data-en="Full curriculum vitae of Ernesto Alcívar López: teaching career, training, works, certifications and distinctions.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="/estatico/img/logo.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/estatico/img/logo.jpg" type="image/png">
+<script>
+(function () {
+  var R = document.documentElement, CLAVE = "cadenza-idioma";
+  function leer() {
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (p === "en" || p === "es") { return p; }
+    try {
+      var g = localStorage.getItem(CLAVE);
+      if (g === "en" || g === "es") { return g; }
+    } catch (e) {}
+    var nav = (navigator.language || "es").toLowerCase();
+    return nav.indexOf("en") === 0 ? "en" : "es";
+  }
+  function aplica(idioma) {
+    var l = idioma === "en" ? "en" : "es";
+    R.setAttribute("data-idioma", l);
+    R.setAttribute("lang", l);
+    var t = document.querySelector("title");
+    if (t && t.dataset[l]) { document.title = t.dataset[l]; }
+    var campos = document.querySelectorAll("[data-es][data-en]");
+    for (var i = 0; i < campos.length; i++) {
+      var el = campos[i];
+      if (el.tagName === "TITLE") { continue; }
+      el.setAttribute("content", el.dataset[l]);
+    }
+    var botones = document.querySelectorAll("[data-ir]");
+    for (var j = 0; j < botones.length; j++) {
+      botones[j].setAttribute("aria-current", botones[j].getAttribute("data-ir") === l ? "true" : "false");
+    }
+  }
+  window.cadenzaIdioma = { aplica: aplica, leer: leer };
+  aplica(leer());
+})();
+</script>
+<link rel="stylesheet" href="/estatico/css/estilo.css">
+<script src="/estatico/js/idioma.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cadenza Inc.",
+  "slogan": "The things as they are",
+  "url": "https://cadenzainc.com",
+  "logo": "https://cadenzainc.com/estatico/img/logo.jpg",
+  "email": "alcivarlopezernesto@gmail.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Ernesto Alcívar López",
+    "jobTitle": "Compositor, arreglista y docente"
+  },
+  "address": {"@type": "PostalAddress", "addressLocality": "Quito", "addressCountry": "EC"}
+}
+</script>
+</head>
+<body class="cv">
+<a class="salto" href="#contenido"><span data-lang="es">Ir al contenido</span><span data-lang="en">Skip to content</span></a>
+
+<header class="cabecera">
+  <a class="marca" href="/">
+    <img src="/estatico/img/logo.jpg" alt="Cadenza Inc." width="56" height="56">
+    <span class="marca-texto">
+      <strong>Cadenza Inc.</strong>
+      <em>The things as they are</em>
+    </span>
+  </a>
+  <nav class="navegacion" id="nav">
+      <a href="/obra.html"><span data-lang="es">Obra</span><span data-lang="en">Work</span></a>
+      <a href="/pedagogia.html"><span data-lang="es">Pedagogía</span><span data-lang="en">Teaching</span></a>
+      <a href="/investigacion.html"><span data-lang="es">Investigación</span><span data-lang="en">Research</span></a>
+      <a href="/estudio.html"><span data-lang="es">Estudio</span><span data-lang="en">Studio</span></a>
+      <a href="/sobre.html"><span data-lang="es">Sobre</span><span data-lang="en">About</span></a>
+      <a href="/cv.html" class="activo"><span data-lang="es">Currículum</span><span data-lang="en">Resume</span></a>
+      <a href="/contacto.html"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
+  </nav>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-ir="es" aria-current="true" lang="es">ES</button>
+    <span class="idioma-sep" aria-hidden="true">/</span>
+    <button type="button" data-ir="en" aria-current="false" lang="en">EN</button>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="cabecera-seccion"><h1><span data-lang="es">Currículum</span><span data-lang="en">Resume</span></h1></section><div class="prosa" data-lang="es"><p>Currículum completo. Trayectoria docente, formación académica, obra, certificaciones y reconocimientos.</p>
+<p><strong>Contacto:</strong> alcivarlopezernesto@gmail.com | 096 054 1969 | Quito, Ecuador</p>
+<p><strong>Descarga:</strong> <a href="/estatico/pdf/cv_ernesto_alcivar.pdf">currículum en PDF</a></p>
+<h2>Perfil profesional</h2>
+<p>Músico profesional, compositor, arreglista y docente con amplia trayectoria en la educación musical, el levantamiento digital de partituras, la gestión cultural y la dirección de ensambles. Cuenta con formación superior tecnológica y universitaria, incluido el título de Tecnólogo/a Superior Universitario en Docencia e Innovación Educativa (2025), complementada con certificaciones en competencias laborales, prevención de riesgos, administración y herramientas tecnológicas aplicadas al entorno de trabajo.</p>
+<h2>Educación y títulos académicos</h2>
+<ul>
+<li>
+<p><strong>Tecnólogo/a Superior Universitario en Docencia e Innovación Educativa</strong></p>
+<ul>
+<li><strong>Institución:</strong> Instituto Tecnológico Universitario Rumiñahui</li>
+<li><strong>Fecha:</strong> 20 de octubre de 2025 | <em>Registro SNIESE:</em> 2198-2025-3229872 (6 de noviembre de 2025)</li>
+<li><strong>Detalle:</strong> Título de tercer nivel tecnológico superior universitario, orientado a la docencia y a la innovación educativa.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial</strong></p>
+<ul>
+<li><strong>Institución:</strong> Instituto Superior Tecnológico Universitario Rumiñahui (Escuela de Posgrados)</li>
+<li><strong>Estado:</strong> Programa concluido (2026). Promedio general: <strong>9,32/10</strong>. Defensa de titulación: 28 de octubre de 2026.</li>
+<li><strong>Detalle:</strong> Análisis de datos e inteligencia artificial aplicados a la docencia musical. Trabajo de titulación: «Generación asistida de fragmentos de ocho compases de contrapunto barroco para piano mediante LSTM con verificación de reglas contrapuntísticas», dirigido por el Ing. Juan Carlos Minango Negrete.</li>
+</ul>
+</li>
+<li>
+<p><strong>Título de Compositor (Equivalente a Tecnología Superior)</strong></p>
+<ul>
+<li><strong>Institución:</strong> Conservatorio Superior Nacional de Música</li>
+<li><strong>Fecha:</strong> 28 de mayo de 2018 | <em>Registro SNIESE:</em> 2243-2018-1989052 (24 de julio de 2018)</li>
+<li><strong>Detalle:</strong> Título profesional registrado que acredita la suficiencia en composición musical y teoría avanzada.</li>
+</ul>
+</li>
+<li>
+<p><strong>Licencias de Conducción</strong></p>
+<ul>
+<li><em>Tipo E (profesional):</em> Escuela de Capacitación del Sindicato de Choferes Profesionales de Pichincha, febrero – noviembre de 2024, bajo la Ley Orgánica de Transporte Terrestre, Tránsito y Seguridad Vial.</li>
+<li><em>Tipo B (no profesional):</em> Automóvil Club del Ecuador (ANETA), certificado N.º 1187-24 del 16 de diciembre de 2024; curso C27-2021 (12–18 de julio de 2021), credencial N.º 10297M, permiso PDA-2021-1255874; teórico 16/20, práctico 19,75/20.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bachiller Técnico Musical (Especialidad: Guitarra)</strong></p>
+<ul>
+<li><strong>Institución:</strong> Conservatorio Nacional de Música / Ministerio de Educación y Cultura</li>
+<li><strong>Fecha:</strong> 28 de julio de 2009 (refrendación y registro de títulos: 17 de marzo de 2010, N.º 3017-841, Pág. 1)</li>
+<li><strong>Calificación:</strong> 18/20 (Muy Buena)</li>
+<li><strong>Detalle:</strong> Formación especializada en interpretación guitarrística y teoría musical.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bachiller en Ciencias (Especialización: Químico - Biológicas)</strong></p>
+<ul>
+<li><strong>Institución:</strong> Colegio Experimental e Instituto Superior de Pedagogía "Juan Montalvo" (Quito)</li>
+<li><strong>Fecha:</strong> 6 de agosto de 1999 (refrendación de títulos: 29 de septiembre de 1999, N.º 12726, Pág. 849)</li>
+<li><strong>Calificación:</strong> 18/20 (Muy Buena)</li>
+</ul>
+</li>
+</ul>
+<h2>Experiencia docente y trayectoria laboral</h2>
+<ul>
+<li>
+<p><strong>Docente de Guitarra / Compositor y Arreglista</strong></p>
+<ul>
+<li><strong>Institución:</strong> Conservatorio Nacional de Música</li>
+<li><strong>Hitos:</strong> </li>
+<li>Docente desde el 26 de octubre de 2014: 12 años de servicio continuo a la fecha (certificado laboral emitido por el Conservatorio Nacional de Música el 14 de octubre de 2026).</li>
+<li>Reconocimiento por 10 años de servicio (junio de 2024), otorgado por compromiso, responsabilidad y profesionalismo en la formación de niños y jóvenes.</li>
+<li>Arreglo para coro femenino interpretado en el Festival de Villancicos organizado por Juan Eljuri, que obtuvo el Primer Lugar (certificación del CNM, 24 de abril de 2026).</li>
+<li>Certificación laboral del CNM (15 de noviembre de 2025) que acredita las funciones de Docente de Guitarra y Materias Teóricas; y certificado laboral del 14 de octubre de 2026, que acredita la enseñanza continua de Creación y Arreglos con software especializado: edición y escritura musical (LilyPond) y entorno de síntesis sonora (SuperCollider).</li>
+<li>Entrega de repertorio didáctico y orquestal para la biblioteca institucional (2017), incluyendo 10 piezas progresivas para ensamble de guitarras de Nivel Básico Medio (60 minutos, hasta cuatro voces), la obra orquestal <em>Suite Costera</em> (8 minutos) y el levantamiento digital del pasillo <em>Nocturnal</em> de Homero Iturralde en el arreglo de Carlos Bonilla Chávez (4 minutos).</li>
+</ul>
+</li>
+<li>
+<p><strong>Profesor de Música (Guitarra) - Programa Metropolitano Quito Cultura Viva</strong></p>
+<ul>
+<li><strong>Institución:</strong> Municipio de Distrito Metropolitano de Quito (Secretaría de Cultura)</li>
+<li><strong>Periodo:</strong> 21 de julio al 21 de septiembre de 2014 (160 horas)</li>
+<li><strong>Detalle:</strong> Prestación de servicios educativos musicales en el programa de arte en los barrios. Las 160 horas constan también como vinculación con la comunidad en el certificado de prácticas preprofesionales de 2018.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maestro del Centro Ocupacional de Educación No Formal</strong></p>
+<ul>
+<li><strong>Institución:</strong> Municipio del Distrito Metropolitano de Quito ("Encuentro, Arte y Cultura")</li>
+<li><strong>Fecha:</strong> Abril de 2005</li>
+<li><strong>Detalle:</strong> Reconocimiento por valioso aporte al arte y la cultura popular en beneficio de la comunidad capitalina.</li>
+</ul>
+</li>
+</ul>
+<h2>Aportes culturales y composiciones destacadas</h2>
+<ul>
+<li>
+<p><strong>Compositor del Himno al Cantón Gonzalo Pizarro (Lumbaqui)</strong></p>
+<ul>
+<li><strong>Año:</strong> 2010. Música compuesta como obra ganadora del concurso público convocado por el GAD Municipal (21 de febrero – 4 de julio de 2010); reconocimiento y homenaje oficial en el XXIX Aniversario de Cantonización (julio de 2015).</li>
+</ul>
+</li>
+<li>
+<p><strong>Compositor del Himno a la Parroquia El Reventador</strong></p>
+<ul>
+<li><strong>Año:</strong> 2010 (certificación oficial del GAD Parroquial El Reventador, Gonzalo Pizarro, Sucumbíos, emitida el 29 de julio de 2014).</li>
+</ul>
+</li>
+<li>
+<p><strong>Trabajos de Digitalización y Arreglos para la Orquesta Sinfónica Nacional del Ecuador (OSNE)</strong></p>
+<ul>
+<li><strong>Año:</strong> 2013 (Certificación por 180 horas laboradas en levantamiento digital de partituras generales y partes individuales: 40 + 80 + 60 horas, abril y mayo de 2013):</li>
+<li><em>Misa Popular Ecuatoriana</em> (Claudio Aizaga): 5 movimientos para coro mixto y orquesta.</li>
+<li><em>Sinfonía No. 6</em> (Luís Humberto Salgado): 4 movimientos para orquesta de cuerdas y timbal.</li>
+<li><em>Suite Andina</em> (Carlos Bonilla Chávez): 3 movimientos para orquesta.</li>
+</ul>
+</li>
+<li>
+<p><strong>Participación en Agrupaciones y Festivales</strong></p>
+<ul>
+<li>Miembro del ensamble de cuerdas <em>Cordalia</em> (agrupación surgida en 2006, dirigida entonces por el Mtro. Jorge Oviedo): concierto en homenaje a la Latinidad junto a la Unión Latina y los Ministerios de Relaciones Exteriores, según reportaje de prensa de diciembre de 2006.</li>
+<li>Participación en el I y II Festival Internacional de Guitarra "Ciudad de Quito" (Fundación Filarmónica Casa de la Música, 2006 y 2007).</li>
+<li>Interpretación de música instrumental ecuatoriana junto al grupo estadounidense <em>The Just Dessert's</em> (Casa de la Cultura Ecuatoriana Benjamín Carrión, Núcleo Sucumbíos, 2010).</li>
+</ul>
+</li>
+</ul>
+<h2>Certificaciones y capacitación continua</h2>
+<h3><strong>Competencias Laborales y Prevención</strong></h3>
+<ul>
+<li><strong>Certificación por Competencias Laborales (MDT):</strong> Prevención de Riesgos Laborales en Actividades de Alto Riesgo (Construcción y Obra Civil). Institución certificadora: Vivas Macías Jorge Sebastián (Vigencia hasta julio de 2029).</li>
+<li><strong>Capacitación MINEDUC:</strong> "Institución Segura Libre de Violencia contra las Mujeres" (Secretaría de Derechos Humanos / PreViMujer - GIZ, junio de 2022).</li>
+</ul>
+<h3><strong>Pedagogía y Gestión</strong></h3>
+<ul>
+<li><strong>Diseño y Planificación de clases según el sistema de educación de Alemania:</strong> Capacitación de 20 horas impartida por el Mtro. Byron Carrasco en el Conservatorio Nacional de Música (abril de 2025).</li>
+<li><strong>De Maestro a Mentor: Desarrollo del estilo pedagógico propio y herramientas para las clases individuales:</strong> Capacitación de 20 horas impartida por el Mtro. Byron Carrasco en el Conservatorio Nacional de Música (17 al 21 de noviembre de 2025).</li>
+<li><strong>Pedagogía: estrategias de enseñanza-aprendizaje:</strong> 20 horas (AulaFácil, noviembre de 2023).</li>
+<li><strong>Didáctica - Cómo Enseñar:</strong> 20 horas (AulaFácil, noviembre de 2023).</li>
+<li><strong>Introducción al Marketing:</strong> 15 horas (AulaFácil, noviembre de 2024).</li>
+<li><strong>Arte y Cultura Popular en la Docencia:</strong> Seminario-Taller del Municipio del Distrito Metropolitano de Quito, 8 horas (mayo de 2003).</li>
+<li><strong>Encuéntrate con la Música y la Guitarra:</strong> Taller del programa "Quito Verano 2009" del Municipio de Quito, por participación y colaboración (agosto de 2009).</li>
+<li><strong>Prospectiva y Gestión Estratégica:</strong> 20 horas (AulaFácil, octubre de 2024).</li>
+<li><strong>Administración de Empresas:</strong> 20 horas (AulaFácil, diciembre de 2024).</li>
+<li><strong>Análisis y Gestión de Riesgos Ambientales:</strong> 10 horas (AulaFácil, diciembre de 2024).</li>
+<li><strong>Arte Contemporáneo (Interpretación y Análisis de Obras):</strong> 5 horas (AulaFácil, octubre de 2024).</li>
+<li><strong>Iniciación a la Música - Teoría:</strong> 40 horas (AulaFácil, noviembre de 2023).</li>
+<li><strong>Producción y Exportación de Madera de Balsa:</strong> 20 horas (Codadepro, marzo de 2022).</li>
+</ul>
+<h3><strong>Tecnología y Herramientas Digitales</strong></h3>
+<ul>
+<li><strong>IA en práctica para el entorno de trabajo:</strong> Certificado de asistencia a la sesión de formación oficial de Google Gemini en el evento IA Leaders, emitido por Power IA y transmitido en directo desde Google Campus Madrid y Torre Picasso (Madrid, 23 de septiembre de 2025; verificación 43345495516995).</li>
+<li><strong>Las Computadoras y su empleo en la música y aprendizaje holístico:</strong> Seminario en la Musicoteca del Banco Central del Ecuador (julio de 2002).</li>
+</ul>
+<h3><strong>Clases Maestras de Guitarra</strong></h3>
+<ul>
+<li><strong>Taller de Guitarra UCE 2025:</strong> Principios técnicos e interpretativos aplicados al repertorio, dictado por los maestros Pablo Negrete y Pedro Barreiro en la Universidad Central del Ecuador (24 al 28 de marzo de 2025).</li>
+<li><strong>Taller de Guitarra Clásica:</strong> Universidad de Las Américas (UDLA), impartido por el Mtro. Pablo Negrete Salazar (septiembre de 2024; 4 horas).</li>
+<li><strong>Clases Maestras de Interpretación de la Guitarra:</strong> Dictadas por el concertista internacional Alberto Mesirca (Italia) en el Conservatorio Nacional de Música, 26 y 27 de noviembre de 2014; 6 horas (registro 004-CNM-TH-14).</li>
+<li><strong>Seminario de Guitarra:</strong> Conservatorio Nacional de Música, por el décimo séptimo aniversario (abril de 2017).</li>
+</ul>
+<h3><strong>Idiomas</strong></h3>
+<ul>
+<li><strong>Inglés A1:</strong> 50 horas (AulaFácil, noviembre de 2023).</li>
+</ul>
+<h3><strong>Práctica Profesional</strong></h3>
+<ul>
+<li><strong>Prácticas preprofesionales - Orquesta Sinfónica Nacional del Ecuador (OSNE):</strong> 404 horas en levantamiento digital de partituras (2013), más 160 horas de vinculación con la comunidad en Quito Cultura (2014), completando las horas exigidas por el RAA para la carrera de Ejecución de Composición Musical (Certificado No. 2018-0008-CSNM-CVCC, 20 de mayo de 2018).</li>
+</ul>
+<h2>Reconocimientos y condecoraciones</h2>
+<ul>
+<li><strong>Reconocimiento de la Asamblea Nacional del Ecuador:</strong> Otorgado por su labor pedagógica y calidad en la preservación, difusión y acrecentamiento del patrimonio musical del país (enero de 2025).</li>
+<li><strong>Reconocimiento del Ministerio de Cultura y Patrimonio:</strong> Otorgado a compositores y arreglistas por el valioso aporte al fortalecimiento de las Agrupaciones Infanto Juveniles Sinfónico Corales y de Tradición Ancestral del Ecuador (mayo de 2016).</li>
+<li><strong>Membresía del Directorio de la CCE Núcleo de Sucumbíos:</strong> Otorgada en reconocimiento a su distinguida trayectoria cultural (mayo de 2010).</li>
+<li><strong>Reconocimiento del VI Encuentro Nacional "La Guitarra es...":</strong> Conferido por la Casa de la Cultura Ecuatoriana "Benjamín Carrión", Núcleo de Chimborazo (febrero de 2003).</li>
+</ul></div><div class="prosa" data-lang="en"><p>Full curriculum vitae. Teaching career, academic training, works, certifications and distinctions.</p>
+<p><strong>Contact:</strong> alcivarlopezernesto@gmail.com | 096 054 1969 | Quito, Ecuador</p>
+<p><strong>Download:</strong> <a href="/estatico/pdf/cv_ernesto_alcivar.pdf">CV as PDF</a></p>
+<h2>Professional summary</h2>
+<p>Professional musician, composer, arranger and teacher with extensive experience in music education, digital score transcription, cultural management and ensemble conducting. Holds higher technological and university education, including the degree of Higher University Technologist in Teaching and Educational Innovation (2025), complemented by certifications in labour competencies, risk prevention, administration and technological tools applied to the work environment.</p>
+<h2>Education and academic degrees</h2>
+<ul>
+<li>
+<p><strong>Higher University Technologist in Teaching and Educational Innovation</strong></p>
+<ul>
+<li><strong>Institution:</strong> Instituto Tecnológico Universitario Rumiñahui</li>
+<li><strong>Date:</strong> 20 October 2025 (Rumiñahui)</li>
+<li><strong>Detail:</strong> Third-level higher university technological degree, focused on teaching and educational innovation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Technological Master's Degree in Digital Tools for Data Analysis and Artificial Intelligence</strong></p>
+</li>
+<li><strong>Status:</strong> Programme completed (2026). Overall average: 9.32/10. Thesis defence held on 28 October 2026.</li>
+<li>
+<p><strong>Detail:</strong> Data analysis and artificial intelligence applied to music teaching. Thesis: "Assisted generation of eight-bar Baroque counterpoint fragments for piano using LSTM with contrapuntal rule verification", supervised by Ing. Juan Carlos Minango Negrete.</p>
+</li>
+<li>
+<p><strong>Composer (equivalent to Higher Technology)</strong></p>
+<ul>
+<li><strong>Institution:</strong> Conservatorio Superior Nacional de Música</li>
+<li><strong>Date:</strong> 28 May 2018</li>
+<li><strong>Detail:</strong> Registered professional degree certifying proficiency in musical composition and advanced theory.</li>
+</ul>
+</li>
+<li>
+<p><strong>Professional Driving Licences</strong></p>
+<ul>
+<li><em>Type E (professional):</em> Sindicato de Choferes Profesionales de Pichincha Training School, February – November 2024, under the Organic Law on Land Transport, Traffic and Road Safety.</li>
+<li><em>Type B (non-professional):</em> Automóvil Club del Ecuador (ANETA), certificate No. 1187-24 of 16 December 2024; course C27-2021 (12–18 July 2021), credential No. 10297M, permit PDA-2021-1255874; theory 16/20, practical 19.75/20.</li>
+</ul>
+</li>
+<li>
+<p><strong>Musical Baccalaureate (Guitar major)</strong></p>
+<ul>
+<li><strong>Institution:</strong> Conservatorio Nacional de Música / Ministry of Education and Culture</li>
+<li><strong>Date:</strong> 28 July 2009 (endorsement and registration of diplomas: 17 March 2010, No. 3017-841, p. 1)</li>
+<li><strong>Grade:</strong> 18/20 (Very Good)</li>
+<li><strong>Detail:</strong> Specialised training in guitar performance and music theory.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bachelor of Science (Chemistry - Biology specialisation)</strong></p>
+<ul>
+<li><strong>Institution:</strong> Colegio Experimental e Instituto Superior de Pedagogía "Juan Montalvo" (Quito)</li>
+<li><strong>Date:</strong> 6 August 1999 (endorsement of diplomas: 29 September 1999, No. 12726, p. 849)</li>
+<li><strong>Grade:</strong> 18/20 (Very Good)</li>
+</ul>
+</li>
+</ul>
+<h2>Teaching experience and professional career</h2>
+<ul>
+<li>
+<p><strong>Guitar Teacher / Composer and Arranger</strong></p>
+<ul>
+<li><strong>Institution:</strong> Conservatorio Nacional de Música</li>
+<li><em>Milestones:</em></li>
+<li>Teacher since 26 October 2014: 12 years of continuous service to date (employment certificate issued by the Conservatorio Nacional de Música on 14 October 2026).</li>
+<li>Recognition for 10 years of service (June 2024), awarded for commitment, responsibility and professionalism in training children and young people.</li>
+<li>Arrangement for female choir performed at the Villancicos Festival organised by Juan Eljuri, which won First Place (CNM certification, 24 April 2026).</li>
+<li>CNM employment certification (15 November 2025) accrediting the duties of Guitar Teacher and Theoretical Subjects; and an employment certificate of 14 October 2026 accrediting the continuous teaching of Composition and Arranging with specialised software: music notation and editing (LilyPond) and a sound synthesis environment (SuperCollider).</li>
+<li>Delivery of didactic and orchestral repertoire to the institutional library (2017), including 10 progressive pieces for guitar ensemble at Lower Intermediate Level (60 minutes, up to four voices), the orchestral work <em>Suite Costera</em> (8 minutes) and the digital transcription of the pasillo <em>Nocturnal</em> by Homero Iturralde in Carlos Bonilla Chávez's arrangement (4 minutes).</li>
+</ul>
+</li>
+<li>
+<p><strong>Music Teacher (Guitar) - Quito Cultura Viva Metropolitan Programme</strong></p>
+<ul>
+<li><strong>Institution:</strong> Municipality of the Metropolitan District of Quito (Secretariat of Culture)</li>
+<li><strong>Period:</strong> 21 July to 21 September 2014 (160 hours)</li>
+<li><strong>Detail:</strong> Provision of music education services in the neighbourhood arts programme. The 160 hours are also recorded as community engagement in the 2018 pre-professional practice certificate.</li>
+</ul>
+</li>
+<li>
+<p><strong>Teacher at the Non-Formal Education Occupational Centre</strong></p>
+<ul>
+<li><strong>Institution:</strong> Municipality of the Metropolitan District of Quito ("Encuentro, Arte y Cultura")</li>
+<li><strong>Date:</strong> April 2005</li>
+<li><strong>Detail:</strong> Recognition for valuable contribution to popular art and culture for the benefit of the capital's community.</li>
+</ul>
+</li>
+</ul>
+<h2>Cultural contributions and major compositions</h2>
+<ul>
+<li>
+<p><strong>Composer of the Hymn to Gonzalo Pizarro Canton (Lumbaqui)</strong></p>
+<ul>
+<li><strong>Year:</strong> 2010. Music composed as the winning entry of the public competition called by the Municipal GAD (21 February – 4 July 2010); official recognition and tribute at the 29th Cantonisation Anniversary (July 2015).</li>
+</ul>
+</li>
+<li>
+<p><strong>Composer of the Hymn to El Reventador Parish</strong></p>
+<ul>
+<li><strong>Year:</strong> 2010 (official certification from the El Reventador Parish GAD, Gonzalo Pizarro, Sucumbíos, issued 29 July 2014).</li>
+</ul>
+</li>
+<li>
+<p><strong>Digital transcription and arrangements for the National Symphony Orchestra of Ecuador (OSNE)</strong></p>
+<ul>
+<li><strong>Year:</strong> 2013 (certification for 180 hours worked on digital transcription of full scores and individual parts: 40 + 80 + 60 hours, April and May 2013):</li>
+<li><em>Misa Popular Ecuatoriana</em> (Claudio Aizaga): 5 movements for mixed choir and orchestra.</li>
+<li><em>Symphony No. 6</em> (Luís Humberto Salgado): 4 movements for string orchestra and timpani.</li>
+<li><em>Suite Andina</em> (Carlos Bonilla Chávez): 3 movements for orchestra.</li>
+</ul>
+</li>
+<li>
+<p><strong>Participation in ensembles and festivals</strong></p>
+<ul>
+<li>Member of the string ensemble <em>Cordalia</em> (ensemble founded in 2006, then conducted by Mtro. Jorge Oviedo): concert in tribute to Latinity with the Unión Latina and the Ministries of Foreign Affairs, as reported in the press in December 2006.</li>
+<li>Participation in the I and II International Guitar Festival "Ciudad de Quito" (Fundación Filarmónica Casa de la Música, 2006 and 2007).</li>
+<li>Performance of Ecuadorian instrumental music with the US group <em>The Just Dessert's</em> (Casa de la Cultura Ecuatoriana Benjamín Carrión, Sucumbíos Chapter, 2010).</li>
+</ul>
+</li>
+</ul>
+<h2>Certifications and continuing training</h2>
+<h3><strong>Labour Competencies and Prevention</strong></h3>
+<ul>
+<li><strong>Labour Competency Certification (MDT):</strong> Occupational Risk Prevention in High-Risk Activities (Construction and Civil Works). Certifying institution: Vivas Macías Jorge Sebastián (valid until July 2029).</li>
+<li><strong>MINEDUC Training:</strong> "Safe Institution Free of Violence against Women" (Secretariat of Human Rights / PreViMujer - GIZ, June 2022).</li>
+</ul>
+<h3><strong>Pedagogy and Management</strong></h3>
+<ul>
+<li><strong>Class design and planning according to the German education system:</strong> 20-hour training delivered by Mtro. Byron Carrasco at the Conservatorio Nacional de Música (April 2025).</li>
+<li><strong>From Teacher to Mentor: developing your own pedagogical style and tools for individual lessons:</strong> 20-hour training delivered by Mtro. Byron Carrasco at the Conservatorio Nacional de Música (17 to 21 November 2025).</li>
+<li><strong>Pedagogy: teaching-learning strategies:</strong> 20 hours (AulaFácil, November 2023).</li>
+<li><strong>Didactics - How to Teach:</strong> 20 hours (AulaFácil, November 2023).</li>
+<li><strong>Introduction to Marketing:</strong> 15 hours (AulaFácil, November 2024).</li>
+<li><strong>Art and Popular Culture in Teaching:</strong> Seminar-Workshop of the Municipality of the Metropolitan District of Quito, 8 hours (May 2003).</li>
+<li><strong>Meet Yourself through Music and Guitar:</strong> Workshop of the "Quito Verano 2009" programme of the Municipality of Quito, for participation and collaboration (August 2009).</li>
+<li><strong>Prospective and Strategic Management:</strong> 20 hours (AulaFácil, October 2024).</li>
+<li><strong>Business Administration:</strong> 20 hours (AulaFácil, December 2024).</li>
+<li><strong>Environmental Risk Analysis and Management:</strong> 10 hours (AulaFácil, December 2024).</li>
+<li><strong>Contemporary Art (Interpretation and Analysis of Works):</strong> 5 hours (AulaFácil, October 2024).</li>
+<li><strong>Introduction to Music - Theory:</strong> 40 hours (AulaFácil, November 2023).</li>
+<li><strong>Balsa Wood Production and Export:</strong> 20 hours (Codadepro, March 2022).</li>
+</ul>
+<h3><strong>Technology and Digital Tools</strong></h3>
+<ul>
+<li><strong>AI in practice for the work environment:</strong> Certificate of attendance at the official Google Gemini training session within the IA Leaders event, issued by Power IA and streamed live from Google Campus Madrid and Torre Picasso (Madrid, 23 September 2025; verification 43345495516995).</li>
+<li><strong>Computers and their use in music and holistic learning:</strong> Seminar at the Music Library of the Central Bank of Ecuador (July 2002).</li>
+</ul>
+<h3><strong>Guitar Masterclasses</strong></h3>
+<ul>
+<li><strong>UCE Guitar Workshop 2025:</strong> Technical and interpretative principles applied to the repertoire, taught by maestros Pablo Negrete and Pedro Barreiro at the Universidad Central del Ecuador (24–28 March 2025).</li>
+<li><strong>Classical Guitar Workshop:</strong> Universidad de Las Américas (UDLA), taught by Mtro. Pablo Negrete Salazar (September 2024; 4 hours).</li>
+<li><strong>Guitar Interpretation Masterclasses:</strong> Taught by international concert guitarist Alberto Mesirca (Italy) at the Conservatorio Nacional de Música, 26–27 November 2014; 6 hours (record 004-CNM-TH-14).</li>
+<li><strong>Guitar Seminar:</strong> Conservatorio Nacional de Música, on its seventeenth anniversary (April 2017).</li>
+</ul>
+<h3><strong>Languages</strong></h3>
+<ul>
+<li><strong>English A1:</strong> 50 hours (AulaFácil, November 2023).</li>
+</ul>
+<h3><strong>Professional Practice</strong></h3>
+<ul>
+<li><strong>Pre-professional practice - National Symphony Orchestra of Ecuador (OSNE):</strong> 404 hours of digital score transcription (2013), plus 160 hours of community engagement at Quito Cultura (2014), completing the hours required by the RAA for the Musical Composition Performance degree (Certificate No. 2018-0008-CSNM-CVCC, 20 May 2018).</li>
+</ul>
+<h2>Awards and recognitions</h2>
+<ul>
+<li><strong>Recognition from the National Assembly of Ecuador:</strong> Awarded for teaching work and quality in the preservation, dissemination and enhancement of the country's musical heritage (January 2025).</li>
+<li><strong>Recognition from the Ministry of Culture and Heritage:</strong> Awarded to composers and arrangers for the valuable contribution to strengthening the Children's and Youth Symphonic-Choral and Ancestral Tradition Ensembles of Ecuador (May 2016).</li>
+<li><strong>Membership of the Board of the CCE Sucumbíos Chapter:</strong> Awarded in recognition of his distinguished cultural career (May 2010).</li>
+<li><strong>Recognition from the VI National Encounter "La Guitarra es...":</strong> Conferred by the Casa de la Cultura Ecuatoriana "Benjamín Carrión", Chimborazo Chapter (February 2003).</li>
+</ul></div>
+</main>
+
+<footer class="pie">
+  <div class="pie-linea"></div>
+  <p><strong>Cadenza Inc.</strong> · The things as they are</p>
+  <p>Quito, Ecuador · <a href="mailto:alcivarlopezernesto@gmail.com">alcivarlopezernesto@gmail.com</a></p>
+  <p class="pie-fino">© 2026 Cadenza Inc. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
+</footer>
+
+</body>
+</html>

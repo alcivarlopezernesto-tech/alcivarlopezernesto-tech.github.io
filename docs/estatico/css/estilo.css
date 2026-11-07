@@ -298,10 +298,20 @@ html[data-idioma="en"] [data-lang="es"]{display:none!important}
 }
 @media print{
   .descargas td a::after{content:""}
-  .cabecera,.pie,.saltar{display:none}
+  .cabecera,.pie,.saltar,.navegacion{display:none}
+  h2{break-after:avoid;page-break-after:avoid}
+  li,p{break-inside:avoid;page-break-inside:avoid}
+  main{max-width:none;margin:0;padding:0}
+  @page{margin:18mm 16mm}
   body{background:#fff;color:#000}
   a{color:#000}
   .boton{border-color:#000;color:#000;padding:.4rem .8rem}
   .rejilla,.tarjeta{border-color:#000}
   .idioma{display:none}
 }
+
+
+/* --- Currículum: lectura sin justificar --- */
+body.cv .prosa p, body.cv .prosa li { text-align: left; hyphens: none; }
+body.cv .prosa ul { margin-top: .2rem; }
+body.cv .prosa h2 { margin-top: 1.8rem; }

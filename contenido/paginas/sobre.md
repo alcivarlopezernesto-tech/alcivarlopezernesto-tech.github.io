@@ -35,7 +35,7 @@ Su trabajo combina oficios que rara vez se ejercen juntos: la escritura musical 
 
 LilyPond y Sibelius para escritura musical; SuperCollider para síntesis y programación orientada a objetos; Python para análisis de datos y modelos de aprendizaje automático; LaTeX para documentación técnica y pedagógica.
 
-[Descargar el currículum completo en PDF](/estatico/pdf/cv_ernesto_alcivar.pdf)
+[Ver el currículum completo en línea](/cv.html) · [Descargar en PDF](/estatico/pdf/cv_ernesto_alcivar.pdf)
 
 <!--:en-->
 
@@ -69,4 +69,4 @@ His work brings together trades that are rarely practised together: writing musi
 
 LilyPond and Sibelius for music notation; SuperCollider for synthesis and object-oriented programming; Python for data analysis and machine-learning models; LaTeX for technical and teaching documentation.
 
-[Download the full CV in PDF](/estatico/pdf/cv_ernesto_alcivar.pdf)
+[Read the full CV online](/cv.html) · [Download as PDF](/estatico/pdf/cv_ernesto_alcivar.pdf)

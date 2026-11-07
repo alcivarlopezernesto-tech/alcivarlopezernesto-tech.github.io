@@ -375,6 +375,7 @@ def construir() -> None:
             descripcion=ficha.get("descripcion"),
             titulo_en=f"{ficha.get('titulo_en') or ficha['titulo']} — {SITIO['nombre']}",
             descripcion_en=ficha.get("descripcion_en"),
+            clase=ficha.get("clase", ""),
         )
 
     # Colecciones
