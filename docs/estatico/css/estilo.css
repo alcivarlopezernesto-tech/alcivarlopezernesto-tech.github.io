@@ -180,7 +180,7 @@ h3{font-size:1.18rem;margin:0 0 .5rem}
    forma y el color que fija la guía de marca). Solo lo llevan las fichas con
    video publicado: Op. Intempore y Arreglos. En la tarjeta va junto al título y
    al tamaño de la fuente de ese título. */
-.ico-yt{width:1em;height:1em;flex:none;display:block}
+.ico-yt{width:.72em;height:.72em;flex:none;display:block}
 .ico-yt .cuerpo{fill:#FF0000}
 .boton svg.ico-yt{width:1.05em;height:1.05em;fill:none}
 
