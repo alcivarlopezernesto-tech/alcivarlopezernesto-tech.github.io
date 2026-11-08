@@ -15,7 +15,7 @@ datos:
   - ["Partituras|Scores", "partituras"]
 partituras: "Descarga libre en cada video"
 enlaces:
-  - ["Escuchar la lista de reproducción|Listen to the playlist", "https://www.youtube.com/playlist?list=PLDyNCm_kv3TY", "play"]
+  - ["Escuchar la lista de reproducción|Listen to the playlist", "https://www.youtube.com/playlist?list=PLDyNCm_kv3TY", "youtube"]
 titulo_en: "Op. Intempore"
 sumilla_en: "A cycle of sixteen pieces, completed and published. Every video carries the free score download link in its description."
 meta_en: "Cycle · completed"

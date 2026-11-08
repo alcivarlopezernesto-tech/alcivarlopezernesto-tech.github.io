@@ -175,6 +175,28 @@ h3{font-size:1.18rem;margin:0 0 .5rem}
   border-color:var(--oro);border-bottom-color:var(--oro);
 }
 
+/* ---------- marca de YouTube ----------
+   El logotipo va en su rojo oficial (#FF0000) con el triángulo blanco: las guías
+   de marca de YouTube no permiten recolorearlo. La tipografía y el borde siguen
+   el sistema del sitio (oro, versalitas, esquinas rectas). */
+.ico-yt{width:1.15em;height:1.15em;flex:none;display:block}
+.ico-yt .cuerpo{fill:#FF0000}
+.boton svg.ico-yt{width:1.05em;height:1.05em;fill:none}
+.insignia-yt{
+  display:inline-flex;align-items:center;gap:.8rem;margin-top:1.4rem;
+  font-family:var(--sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;line-height:1;
+  color:var(--texto);text-decoration:none;
+  border:1px solid var(--linea-fuerte);border-radius:0;
+  padding:.95rem 1.5rem;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.insignia-yt:hover,.insignia-yt:focus{
+  background:rgba(255,0,0,.14);border-color:rgba(255,0,0,.6);color:var(--blanco);
+}
+.tarjeta h3{display:flex;align-items:flex-start;justify-content:space-between;gap:.7rem}
+.marca-yt{display:inline-flex;flex:none;margin-top:.15em}
+
 /* ---------- galería de miniaturas ---------- */
 .ficha-ancha{max-width:none}
 .ficha-ancha > *:not(.galeria){max-width:70ch}

@@ -43,6 +43,10 @@ DIRECCION_PAGES = "alcivarlopezernesto-tech.github.io"
 DOMINIO = str(SITIO.get("dominio") or "").strip()
 DOMINIO_URL = DOMINIO or DIRECCION_PAGES
 
+# Canal de YouTube donde vive la obra publicada. Se usa para la insignia de la
+# pestaña Obra; si se deja vacío, la insignia no se genera.
+CANAL_YT = str(SITIO.get("youtube_canal") or "").strip()
+
 MD = markdown.Markdown(extensions=["extra", "tables", "attr_list", "md_in_html"])
 
 SEPARADOR_EN = "<!--:en-->"
@@ -178,14 +182,44 @@ def tarjeta(ficha: dict, base: str) -> str:
     sumilla = par(ficha, "sumilla")
     return f"""<a class="tarjeta" href="/{base}/{ficha['_slug']}.html">
   <span class="tarjeta-meta">{bi(meta_es, meta_en)}</span>
-  <h3>{bi(ficha['titulo'], ficha.get('titulo_en'))}</h3>
+  <h3>{bi(ficha['titulo'], ficha.get('titulo_en'))}{marca_youtube(ficha)}</h3>
   <p>{bi(sumilla[0], sumilla[1])}</p>
 </a>"""
 
 
 ICONOS = {
     "play": '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.6v8.8l7-4.4z"/></svg>',
+    # Logotipo de YouTube en su forma y color oficiales (rojo #FF0000, triángulo
+    # blanco): las guías de marca de la plataforma prohíben recolorearlo.
+    "youtube": (
+        '<svg class="ico-yt" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+        '<path class="cuerpo" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 '
+        '.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 '
+        '2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/>'
+        '<path d="M9.6 15.6 15.8 12 9.6 8.4z" fill="#fff"/></svg>'
+    ),
 }
+
+
+def url_youtube(ficha: dict) -> str:
+    """Primer enlace de YouTube de la ficha (galería de videos o enlaces), o \"\"."""
+    for item in ficha.get("galeria", []) or []:
+        if item and item[0]:
+            return f"https://www.youtube.com/watch?v={item[0]}"
+    for item in ficha.get("enlaces", []) or []:
+        if len(item) > 1:
+            url = str(item[1])
+            if "youtube.com" in url or "youtu.be" in url:
+                return url
+    return ""
+
+
+def marca_youtube(ficha: dict) -> str:
+    """Marca de YouTube en la tarjeta del índice: dice de un vistazo si la ficha
+    tiene video publicado."""
+    if not url_youtube(ficha):
+        return ""
+    return f'<span class="marca-yt" role="img" aria-label="YouTube">{ICONOS["youtube"]}</span>'
 
 
 def bloque_enlaces(ficha: dict) -> str:
@@ -337,11 +371,12 @@ def ficha_html(ficha: dict, seccion: str) -> str:
 
 
 def listado(titulo: str, titulo_en: str, intro_es: str, intro_en: str,
-            fichas: list[dict], base: str) -> str:
+            fichas: list[dict], base: str, insignia: str = "") -> str:
     tarjetas = "\n".join(tarjeta(f, base) for f in fichas)
     return f"""<section class="cabecera-seccion">
   <h1>{bi(titulo, titulo_en)}</h1>
   {bi_md(intro_es, intro_en)}
+  {insignia}
 </section>
 <section class="rejilla">
 {tarjetas}
@@ -426,10 +461,17 @@ def construir() -> None:
     for nombre, (fichas, base) in indices.items():
         indice = leer_ficha(CONTENIDO / f"indices/{nombre}.md")
         titulo_es, titulo_en = SECCIONES[nombre]
+        insignia = ""
+        if nombre == "obra" and CANAL_YT:
+            insignia = (
+                f'<a class="insignia-yt" href="{html.escape(CANAL_YT)}"'
+                ' target="_blank" rel="noopener">'
+                f'{ICONOS["youtube"]}{bi(*UI["obra_youtube"])}</a>'
+            )
         pagina(SALIDA / f"{nombre}.html",
                f"{titulo_es} — {SITIO['nombre']}",
                listado(titulo_es, titulo_en, indice["_cuerpo"], indice.get("_cuerpo_en") or indice["_cuerpo"],
-                       fichas, base),
+                       fichas, base, insignia),
                activo=f"/{nombre}.html",
                descripcion=indice.get("descripcion"),
                titulo_en=f"{titulo_en} — {SITIO['nombre']}",

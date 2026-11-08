@@ -7,7 +7,7 @@ instrumentacion: "Voz solista con banda y orquesta de cuerdas, según el registr
 duracion: "De 2:28 a 5:06 por pieza"
 estado: "Publicado en video"
 enlaces:
-  - ["Ver la lista de reproducción|Watch the playlist", "https://www.youtube.com/playlist?list=PLBuTiDsLFIdE", "play"]
+  - ["Ver la lista de reproducción|Watch the playlist", "https://www.youtube.com/playlist?list=PLBuTiDsLFIdE", "youtube"]
 datos:
   - ["Tipo|Type", "tipo"]
   - ["Arreglos|Arrangements", "piezas"]
