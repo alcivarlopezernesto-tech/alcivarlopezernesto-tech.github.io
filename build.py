@@ -17,6 +17,7 @@ No requiere dependencias externas salvo PyYAML y Markdown.
 from __future__ import annotations
 
 import html
+import re
 import hashlib
 import shutil
 from pathlib import Path
@@ -43,6 +44,7 @@ UI = MARCA["interfaz"]
 DIRECCION_PAGES = "alcivarlopezernesto-tech.github.io"
 DOMINIO = str(SITIO.get("dominio") or "").strip()
 DOMINIO_URL = DOMINIO or DIRECCION_PAGES
+URL_BASE = f"https://{DOMINIO_URL}"
 
 MD = markdown.Markdown(extensions=["extra", "tables", "attr_list", "md_in_html"])
 
@@ -170,6 +172,8 @@ def pagina(destino: Path, titulo: str, cuerpo: str, activo: str = "",
             correo=SITIO["correo"],
             anio=SITIO["anio"],
             clase=clase,
+            url_base=URL_BASE,
+            ruta="/" if destino.name == "index.html" else "/" + destino.name,
             salto=bi(*UI["salto"]),
             derechos=bi(*UI["derechos"]),
             idioma_etiqueta=UI["idioma_etiqueta"],
@@ -538,6 +542,14 @@ def construir() -> None:
            f'<a href="/">{bi(*UI["volver_inicio"])}</a>.</p></section>',
            titulo_en=f"{UI['no_encontrado'][1]} — {SITIO['nombre']}",
            descripcion_en=UI["no_encontrado_texto"][1])
+
+    # El 404 no se indexa ni se canoniza
+    _404 = SALIDA / "404.html"
+    if _404.exists():
+        _h = _404.read_text(encoding="utf-8")
+        _h = re.sub(r'<link rel="canonical"[^>]*>\n?', "", _h)
+        _h = _h.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)
+        _404.write_text(_h, encoding="utf-8")
 
     # Archivos de publicación
     (SALIDA / ".nojekyll").write_text("", encoding="utf-8")
