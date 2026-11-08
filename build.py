@@ -185,14 +185,13 @@ def tarjeta(ficha: dict, base: str) -> str:
   <p>{bi(sumilla[0], sumilla[1])}</p>
 </a>"""
     # Ficha con video publicado: la tarjeta deja de ser un enlace único para poder
-    # llevar un botón propio de YouTube. El título se estira sobre toda la tarjeta
-    # (patrón de enlace estirado) y el botón queda por encima, así el resto de la
-    # tarjeta sigue abriendo la ficha y el botón va directo al video.
+    # llevar el logo de YouTube junto al título. El título se estira sobre toda la
+    # tarjeta (patrón de enlace estirado) y el logo queda por encima, así el resto
+    # de la tarjeta sigue abriendo la ficha y el logo va directo a la lista.
     return f"""<div class="tarjeta tarjeta-yt">
   <span class="tarjeta-meta">{bi(meta_es, meta_en)}</span>
-  <h3><a class="estira" href="/{base}/{ficha['_slug']}.html">{titulo}</a></h3>
+  <h3><a class="estira" href="/{base}/{ficha['_slug']}.html">{titulo}</a><a class="ico-yt-enlace" href="{html.escape(url_yt)}" target="_blank" rel="noopener" aria-label="YouTube">{ICONOS['youtube']}</a></h3>
   <p>{bi(sumilla[0], sumilla[1])}</p>
-  <a class="boton-yt" href="{html.escape(url_yt)}" target="_blank" rel="noopener" aria-label="YouTube">{ICONOS['youtube']}<span>YouTube</span></a>
 </div>"""
 
 
@@ -202,10 +201,11 @@ ICONOS = {
     # blanco): las guías de marca de la plataforma prohíben recolorearlo.
     "youtube": (
         '<svg class="ico-yt" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-        '<path class="cuerpo" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 '
-        '.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 '
-        '2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/>'
-        '<path d="M9.6 15.6 15.8 12 9.6 8.4z" fill="#fff"/></svg>'
+        '<path class="cuerpo" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 '
+        '0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 '
+        '2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 '
+        '24 12s0-3.93-.502-5.814z"/>'
+        '<path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#fff"/></svg>'
     ),
 }
 

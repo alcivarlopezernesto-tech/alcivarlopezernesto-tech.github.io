@@ -176,30 +176,22 @@ h3{font-size:1.18rem;margin:0 0 .5rem}
 }
 
 /* ---------- marca de YouTube ----------
-   El logotipo va en su rojo oficial (#FF0000) con el triángulo blanco: las guías
-   de marca de YouTube no permiten recolorearlo. Solo lo llevan las fichas con
-   video publicado (Op. Intempore y Arreglos). */
-.ico-yt{width:1.15em;height:1.15em;flex:none;display:block}
+   Logotipo oficial de YouTube (rectángulo rojo #FF0000 y triángulo blanco, la
+   forma y el color que fija la guía de marca). Solo lo llevan las fichas con
+   video publicado: Op. Intempore y Arreglos. En la tarjeta va junto al título y
+   al tamaño de la fuente de ese título. */
+.ico-yt{width:1em;height:1em;flex:none;display:block}
 .ico-yt .cuerpo{fill:#FF0000}
 .boton svg.ico-yt{width:1.05em;height:1.05em;fill:none}
 
 /* Tarjeta con video: el título se estira sobre toda la tarjeta (patrón de enlace
-   estirado) y el botón de YouTube queda por encima, así se llega al video sin
+   estirado) y el logo de YouTube queda por encima, así se llega a la lista sin
    abrir la ficha y el resto de la tarjeta sigue abriéndola. */
 .tarjeta-yt{position:relative}
 .tarjeta-yt h3 a{color:inherit;border-bottom:0}
+.tarjeta-yt h3{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
 .estira::after{content:"";position:absolute;inset:0;z-index:1}
-.boton-yt{
-  position:relative;z-index:2;align-self:flex-start;margin-top:.9rem;
-  display:inline-flex;align-items:center;gap:.55rem;
-  font-family:var(--sans);font-size:.66rem;font-weight:600;
-  letter-spacing:.16em;text-transform:uppercase;line-height:1;
-  color:var(--blanco);text-decoration:none;
-  border:1px solid rgba(255,0,0,.5);border-radius:0;
-  padding:.6rem .9rem;
-  transition:background .2s,border-color .2s;
-}
-.boton-yt:hover,.boton-yt:focus{background:rgba(255,0,0,.16);border-color:#FF0000}
+.ico-yt-enlace{position:relative;z-index:2;display:inline-flex;line-height:0}
 
 /* ---------- galería de miniaturas ---------- */
 .ficha-ancha{max-width:none}
@@ -318,7 +310,6 @@ html[data-idioma="en"] [data-lang="es"]{display:none!important}
   .portada h1{font-size:1.5rem;letter-spacing:.045em;max-width:none}
   .oficio{grid-template-columns:1fr;gap:.35rem 0;padding:1.1rem 0}
   .portada h1{letter-spacing:.05em}
-  .boton-yt{font-size:.62rem;padding:.55rem .8rem}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
