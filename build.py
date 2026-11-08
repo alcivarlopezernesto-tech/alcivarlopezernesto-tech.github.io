@@ -241,18 +241,23 @@ def redes_html() -> str:
     nunca se publica un enlace a un perfil que todavía no existe."""
     enlaces = []
     for red in MARCA.get("redes", []) or []:
-        url = str(red.get("url") or "").strip()
         icono = REDES_ICONOS.get(str(red.get("icono") or ""))
-        if not url or not icono:
+        if not icono:
             continue
         trazo, color = icono
         nombre = str(red.get("nombre") or red.get("icono"))
-        enlaces.append(
-            f'<a href="{html.escape(url)}" target="_blank" rel="noopener me" '
-            f'aria-label="{html.escape(nombre)}" title="{html.escape(nombre)}">'
-            f'<svg class="ico-red" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-            f'<path fill="{color}" d="{trazo}"/></svg></a>'
-        )
+        url = str(red.get("url") or "").strip()
+        svg = (f'<svg class="ico-red" viewBox="0 0 24 24" aria-hidden="true" '
+               f'focusable="false"><path fill="{color}" d="{trazo}"/></svg>')
+        if url:
+            enlaces.append(
+                f'<a href="{html.escape(url)}" target="_blank" rel="noopener me" '
+                f'aria-label="{html.escape(nombre)}" title="{html.escape(nombre)}">{svg}</a>')
+        else:
+            # Sin perfil todavía: el icono se ve, pero no es un enlace muerto.
+            enlaces.append(
+                f'<span class="redes-pendiente" role="img" aria-label="{html.escape(nombre)}" '
+                f'title="{html.escape(nombre)} — perfil en preparación">{svg}</span>')
     if not enlaces:
         return ""
     return ('<nav class="redes" aria-label="Redes sociales">' + "".join(enlaces) + "</nav>")
