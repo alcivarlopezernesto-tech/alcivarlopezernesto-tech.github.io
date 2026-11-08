@@ -17,6 +17,7 @@ No requiere dependencias externas salvo PyYAML y Markdown.
 from __future__ import annotations
 
 import html
+import hashlib
 import shutil
 from pathlib import Path
 from string import Template
@@ -44,6 +45,12 @@ DOMINIO = str(SITIO.get("dominio") or "").strip()
 DOMINIO_URL = DOMINIO or DIRECCION_PAGES
 
 MD = markdown.Markdown(extensions=["extra", "tables", "attr_list", "md_in_html"])
+
+# Huella de los estáticos: va en la URL del CSS y del JS para que el navegador no
+# siga sirviendo la versión vieja después de un despliegue (GitHub Pages cachea
+# los archivos 10 minutos y eso hacía que los cambios de estilo "no se vieran").
+VERSION_CSS = hashlib.md5((ESTATICO / "css" / "estilo.css").read_bytes()).hexdigest()[:8]
+VERSION_JS = hashlib.md5((ESTATICO / "js" / "idioma.js").read_bytes()).hexdigest()[:8]
 
 SEPARADOR_EN = "<!--:en-->"
 
@@ -166,6 +173,8 @@ def pagina(destino: Path, titulo: str, cuerpo: str, activo: str = "",
             salto=bi(*UI["salto"]),
             derechos=bi(*UI["derechos"]),
             idioma_etiqueta=UI["idioma_etiqueta"],
+            version_css=VERSION_CSS,
+            version_js=VERSION_JS,
         ),
         encoding="utf-8",
     )
