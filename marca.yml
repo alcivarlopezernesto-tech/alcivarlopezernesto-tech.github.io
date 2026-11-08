@@ -6,8 +6,7 @@ sitio:
   correo: "alcivarlopezernesto@gmail.com"
   dominio: ""   # cadenzainc.com — ponerlo aquí cuando el dominio esté registrado y apuntando a GitHub Pages
   anio: 2026
-  youtube_canal: "https://www.youtube.com/channel/UCVK-AyvqB9vo3XFfXeYHcDQ"
-  youtube_lista: "https://www.youtube.com/playlist?list=PLDyNCm_kv3TY"
+  youtube_canal: "https://www.youtube.com/channel/UCVK-AyvqB9vo3XFfXeYHcDQ"   # dato del sitio; los enlaces por obra van en cada ficha
 
 navegacion:
   - titulo: "Obra"
@@ -37,7 +36,6 @@ interfaz:
   salto: ["Ir al contenido", "Skip to content"]
   derechos: ["Todos los derechos reservados.", "All rights reserved."]
   obra_reciente: ["Obra reciente", "Recent work"]
-  obra_youtube: ["Ver la obra en YouTube", "Watch the work on YouTube"]
   no_encontrado: ["No encontrado", "Not found"]
   no_encontrado_texto: ["Esta página no existe o cambió de lugar.", "This page does not exist or has moved."]
   volver_inicio: ["Volver al inicio", "Back to the home page"]

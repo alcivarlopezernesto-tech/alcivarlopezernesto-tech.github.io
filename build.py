@@ -43,10 +43,6 @@ DIRECCION_PAGES = "alcivarlopezernesto-tech.github.io"
 DOMINIO = str(SITIO.get("dominio") or "").strip()
 DOMINIO_URL = DOMINIO or DIRECCION_PAGES
 
-# Canal de YouTube donde vive la obra publicada. Se usa para la insignia de la
-# pestaña Obra; si se deja vacío, la insignia no se genera.
-CANAL_YT = str(SITIO.get("youtube_canal") or "").strip()
-
 MD = markdown.Markdown(extensions=["extra", "tables", "attr_list", "md_in_html"])
 
 SEPARADOR_EN = "<!--:en-->"
@@ -180,11 +176,24 @@ def tarjeta(ficha: dict, base: str) -> str:
     if not meta_es:
         meta_es, meta_en = par(ficha, "resumen")
     sumilla = par(ficha, "sumilla")
-    return f"""<a class="tarjeta" href="/{base}/{ficha['_slug']}.html">
+    url_yt = url_youtube(ficha)
+    titulo = bi(ficha["titulo"], ficha.get("titulo_en"))
+    if not url_yt:
+        return f"""<a class="tarjeta" href="/{base}/{ficha['_slug']}.html">
   <span class="tarjeta-meta">{bi(meta_es, meta_en)}</span>
-  <h3>{bi(ficha['titulo'], ficha.get('titulo_en'))}{marca_youtube(ficha)}</h3>
+  <h3>{titulo}</h3>
   <p>{bi(sumilla[0], sumilla[1])}</p>
 </a>"""
+    # Ficha con video publicado: la tarjeta deja de ser un enlace único para poder
+    # llevar un botón propio de YouTube. El título se estira sobre toda la tarjeta
+    # (patrón de enlace estirado) y el botón queda por encima, así el resto de la
+    # tarjeta sigue abriendo la ficha y el botón va directo al video.
+    return f"""<div class="tarjeta tarjeta-yt">
+  <span class="tarjeta-meta">{bi(meta_es, meta_en)}</span>
+  <h3><a class="estira" href="/{base}/{ficha['_slug']}.html">{titulo}</a></h3>
+  <p>{bi(sumilla[0], sumilla[1])}</p>
+  <a class="boton-yt" href="{html.escape(url_yt)}" target="_blank" rel="noopener" aria-label="YouTube">{ICONOS['youtube']}<span>YouTube</span></a>
+</div>"""
 
 
 ICONOS = {
@@ -202,36 +211,19 @@ ICONOS = {
 
 
 def url_youtube(ficha: dict) -> str:
-    """Primer enlace de YouTube de la ficha (galería de videos o enlaces), o \"\"."""
+    """Enlace de YouTube de la ficha: prioriza la lista de reproducción, que agrupa
+    la obra, sobre un video suelto. Devuelve \"\" si la ficha no tiene video."""
+    enlaces = [str(item[1]) for item in (ficha.get("enlaces") or []) if len(item) > 1]
+    for url in enlaces:
+        if "list=" in url and ("youtube.com" in url or "youtu.be" in url):
+            return url
+    for url in enlaces:
+        if "youtube.com" in url or "youtu.be" in url:
+            return url
     for item in ficha.get("galeria", []) or []:
         if item and item[0]:
             return f"https://www.youtube.com/watch?v={item[0]}"
-    for item in ficha.get("enlaces", []) or []:
-        if len(item) > 1:
-            url = str(item[1])
-            if "youtube.com" in url or "youtu.be" in url:
-                return url
     return ""
-
-
-def marca_youtube(ficha: dict) -> str:
-    """Marca de YouTube en la tarjeta del índice: dice de un vistazo si la ficha
-    tiene video publicado."""
-    if not url_youtube(ficha):
-        return ""
-    return f'<span class="marca-yt" role="img" aria-label="YouTube">{ICONOS["youtube"]}</span>'
-
-
-def boton_flotante_yt() -> str:
-    """Botón de acceso rápido a YouTube, fijo en pantalla mientras se recorre el
-    índice: lleva al canal sin abrir ninguna ficha."""
-    if not CANAL_YT:
-        return ""
-    return (
-        f'<a class="yt-flotante" href="{html.escape(CANAL_YT)}" target="_blank"'
-        ' rel="noopener" aria-label="YouTube">'
-        f'{ICONOS["youtube"]}<span>YouTube</span></a>'
-    )
 
 
 def bloque_enlaces(ficha: dict) -> str:
@@ -383,12 +375,11 @@ def ficha_html(ficha: dict, seccion: str) -> str:
 
 
 def listado(titulo: str, titulo_en: str, intro_es: str, intro_en: str,
-            fichas: list[dict], base: str, insignia: str = "") -> str:
+            fichas: list[dict], base: str) -> str:
     tarjetas = "\n".join(tarjeta(f, base) for f in fichas)
     return f"""<section class="cabecera-seccion">
   <h1>{bi(titulo, titulo_en)}</h1>
   {bi_md(intro_es, intro_en)}
-  {insignia}
 </section>
 <section class="rejilla">
 {tarjetas}
@@ -473,19 +464,10 @@ def construir() -> None:
     for nombre, (fichas, base) in indices.items():
         indice = leer_ficha(CONTENIDO / f"indices/{nombre}.md")
         titulo_es, titulo_en = SECCIONES[nombre]
-        insignia = ""
-        flotante = ""
-        if nombre == "obra" and CANAL_YT:
-            insignia = (
-                f'<a class="insignia-yt" href="{html.escape(CANAL_YT)}"'
-                ' target="_blank" rel="noopener">'
-                f'{ICONOS["youtube"]}{bi(*UI["obra_youtube"])}</a>'
-            )
-            flotante = boton_flotante_yt()
         pagina(SALIDA / f"{nombre}.html",
                f"{titulo_es} — {SITIO['nombre']}",
                listado(titulo_es, titulo_en, indice["_cuerpo"], indice.get("_cuerpo_en") or indice["_cuerpo"],
-                       fichas, base, insignia) + flotante,
+                       fichas, base),
                activo=f"/{nombre}.html",
                descripcion=indice.get("descripcion"),
                titulo_en=f"{titulo_en} — {SITIO['nombre']}",
