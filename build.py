@@ -222,6 +222,18 @@ def marca_youtube(ficha: dict) -> str:
     return f'<span class="marca-yt" role="img" aria-label="YouTube">{ICONOS["youtube"]}</span>'
 
 
+def boton_flotante_yt() -> str:
+    """Botón de acceso rápido a YouTube, fijo en pantalla mientras se recorre el
+    índice: lleva al canal sin abrir ninguna ficha."""
+    if not CANAL_YT:
+        return ""
+    return (
+        f'<a class="yt-flotante" href="{html.escape(CANAL_YT)}" target="_blank"'
+        ' rel="noopener" aria-label="YouTube">'
+        f'{ICONOS["youtube"]}<span>YouTube</span></a>'
+    )
+
+
 def bloque_enlaces(ficha: dict) -> str:
     """Botones de enlace externo declarados en el front matter:
 
@@ -462,16 +474,18 @@ def construir() -> None:
         indice = leer_ficha(CONTENIDO / f"indices/{nombre}.md")
         titulo_es, titulo_en = SECCIONES[nombre]
         insignia = ""
+        flotante = ""
         if nombre == "obra" and CANAL_YT:
             insignia = (
                 f'<a class="insignia-yt" href="{html.escape(CANAL_YT)}"'
                 ' target="_blank" rel="noopener">'
                 f'{ICONOS["youtube"]}{bi(*UI["obra_youtube"])}</a>'
             )
+            flotante = boton_flotante_yt()
         pagina(SALIDA / f"{nombre}.html",
                f"{titulo_es} — {SITIO['nombre']}",
                listado(titulo_es, titulo_en, indice["_cuerpo"], indice.get("_cuerpo_en") or indice["_cuerpo"],
-                       fichas, base, insignia),
+                       fichas, base, insignia) + flotante,
                activo=f"/{nombre}.html",
                descripcion=indice.get("descripcion"),
                titulo_en=f"{titulo_en} — {SITIO['nombre']}",
