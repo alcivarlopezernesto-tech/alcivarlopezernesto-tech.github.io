@@ -9,7 +9,7 @@ datos:
   - ["Método|Method", "metodo"]
   - ["Páginas|Pages", "paginas"]
 programa: "Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e IA — ISTER Rumiñahui"
-director: "Ing. Juan Carlos Minango Negrete"
+director: "Ing. Juan Carlos Minango Negrete, PhD"
 estado: "Defensa 28/10/2026"
 metodo: "Redes LSTM entrenadas sobre corpus de contrapunto barroco"
 titulo_en: "Computer-assisted generation of Baroque counterpoint with LSTM networks"

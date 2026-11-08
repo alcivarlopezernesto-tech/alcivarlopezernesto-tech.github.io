@@ -24,7 +24,7 @@ Músico profesional, compositor, arreglista y docente con amplia trayectoria en 
 - **Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial**
     - **Institución:** Instituto Superior Tecnológico Universitario Rumiñahui (Escuela de Posgrados)
     - **Estado:** Programa concluido (2026). Promedio general: **9,32/10**. Defensa de titulación: 28 de octubre de 2026.
-    - **Detalle:** Análisis de datos e inteligencia artificial aplicados a la docencia musical. Trabajo de titulación: «Generación asistida de fragmentos de ocho compases de contrapunto barroco para piano mediante LSTM con verificación de reglas contrapuntísticas», dirigido por el Ing. Juan Carlos Minango Negrete.
+    - **Detalle:** Análisis de datos e inteligencia artificial aplicados a la docencia musical. Trabajo de titulación: «Generación asistida de fragmentos de ocho compases de contrapunto barroco para piano mediante LSTM con verificación de reglas contrapuntísticas», dirigido por el Ing. Juan Carlos Minango Negrete, PhD.
 
 - **Título de Compositor (Equivalente a Tecnología Superior)**
     - **Institución:** Conservatorio Superior Nacional de Música
@@ -147,7 +147,7 @@ Professional musician, composer, arranger and teacher with extensive experience 
 
 - **Technological Master's Degree in Digital Tools for Data Analysis and Artificial Intelligence**
 - **Status:** Programme completed (2026). Overall average: 9.32/10. Thesis defence held on 28 October 2026.
-- **Detail:** Data analysis and artificial intelligence applied to music teaching. Thesis: "Assisted generation of eight-bar Baroque counterpoint fragments for piano using LSTM with contrapuntal rule verification", supervised by Ing. Juan Carlos Minango Negrete.
+- **Detail:** Data analysis and artificial intelligence applied to music teaching. Thesis: "Assisted generation of eight-bar Baroque counterpoint fragments for piano using LSTM with contrapuntal rule verification", supervised by Ing. Juan Carlos Minango Negrete, PhD.
 
 - **Composer (equivalent to Higher Technology)**
     - **Institution:** Conservatorio Superior Nacional de Música

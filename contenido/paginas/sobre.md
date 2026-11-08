@@ -11,7 +11,7 @@ Su trabajo combina oficios que rara vez se ejercen juntos: la escritura musical 
 
 ## Formación
 
-- **Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial** — Instituto Superior Tecnológico Universitario Rumiñahui. Programa concluido en 2026 con promedio 9,32/10; defensa de titulación el 28 de octubre de 2026, sobre generación asistida de contrapunto barroco mediante LSTM, dirigido por el Ing. Juan Carlos Minango Negrete.
+- **Maestría Tecnológica en Herramientas Digitales para el Análisis de Datos e Inteligencia Artificial** — Instituto Superior Tecnológico Universitario Rumiñahui. Programa concluido en 2026 con promedio 9,32/10; defensa de titulación el 28 de octubre de 2026, sobre generación asistida de contrapunto barroco mediante LSTM, dirigido por el Ing. Juan Carlos Minango Negrete, PhD.
 - **Tecnólogo Superior Universitario en Docencia e Innovación Educativa** — Instituto Tecnológico Universitario Rumiñahui, 2025.
 - **Título de Compositor** — Conservatorio Superior Nacional de Música, 2018.
 - **Bachiller Técnico Musical, especialidad guitarra** — Conservatorio Nacional de Música, 2009. Calificación 18/20.
@@ -45,7 +45,7 @@ His work brings together trades that are rarely practised together: writing musi
 
 ## Training
 
-- **Master's in Digital Tools for Data Analysis and Artificial Intelligence** — Instituto Superior Tecnológico Universitario Rumiñahui. Programme completed in 2026 with a grade average of 9.32/10; viva on 28 October 2026, on computer-assisted generation of Baroque counterpoint with LSTM networks, supervised by Ing. Juan Carlos Minango Negrete.
+- **Master's in Digital Tools for Data Analysis and Artificial Intelligence** — Instituto Superior Tecnológico Universitario Rumiñahui. Programme completed in 2026 with a grade average of 9.32/10; viva on 28 October 2026, on computer-assisted generation of Baroque counterpoint with LSTM networks, supervised by Ing. Juan Carlos Minango Negrete, PhD.
 - **Higher Technology degree in Teaching and Educational Innovation** — Instituto Tecnológico Universitario Rumiñahui, 2025.
 - **Degree in Composition** — Conservatorio Superior Nacional de Música, 2018.
 - **Technical secondary diploma in Music, guitar specialisation** — Conservatorio Nacional de Música, 2009. Grade 18/20.
