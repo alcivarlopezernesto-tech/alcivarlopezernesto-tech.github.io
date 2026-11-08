@@ -39,3 +39,24 @@ interfaz:
   no_encontrado: ["No encontrado", "Not found"]
   no_encontrado_texto: ["Esta página no existe o cambió de lugar.", "This page does not exist or has moved."]
   volver_inicio: ["Volver al inicio", "Back to the home page"]
+
+# Redes sociales del pie del sitio. Las que no tengan url no se dibujan.
+redes:
+  - nombre: "YouTube"
+    icono: "youtube"
+    url: "https://www.youtube.com/channel/UCVK-AyvqB9vo3XFfXeYHcDQ"
+  - nombre: "Telegram"
+    icono: "telegram"
+    url: "https://t.me/cadenza_inc"
+  - nombre: "Instagram"
+    icono: "instagram"
+    url: ""          # pendiente: cuenta profesional
+  - nombre: "Facebook"
+    icono: "facebook"
+    url: ""          # pendiente: página y token
+  - nombre: "TikTok"
+    icono: "tiktok"
+    url: ""          # pendiente: cuenta y auditoría de la API
+  - nombre: "LinkedIn"
+    icono: "linkedin"
+    url: ""          # pendiente: página de empresa y token
